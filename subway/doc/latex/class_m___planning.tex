@@ -1,0 +1,359 @@
+\hypertarget{class_m___planning}{}\section{Référence de la classe M\+\_\+\+Planning}
+\label{class_m___planning}\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+Graphe d\textquotesingle{}héritage de M\+\_\+\+Planning\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_m___planning}
+\end{center}
+\end{figure}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m___planning_a058d0ecc4af6cfeadea6908cede9dcbb}{get\+All\+Ressource} ()
+\begin{DoxyCompactList}\small\item\em Récupére toutes les ressource humaines ou matérielles. \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_ac8e09307ac103e0f2b8bbfa828e7f723}{get\+Activite\+Aplanifier} (\$date)
+\begin{DoxyCompactList}\small\item\em Récupére toutes les activités à planifier en fonctin d\textquotesingle{}une date donné \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_abafbb98badd73ecbd019d9a4c15cd477}{add\+Evenement} (\$title, \$start, \$end, \$ressource\+Id, \$activite\+Id, \$patient\+Id, \$parcours\+Id)
+\begin{DoxyCompactList}\small\item\em Ajout d\textquotesingle{}un événement. \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_adaed7f7dad15559184206d3705a9f78a}{get\+All\+Evenement} ()
+\begin{DoxyCompactList}\small\item\em Récupère tout les événement de la base de données. \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_a6a9b1fa1202b0171f8ceb3e69717e2bb}{get\+Parcours\+By\+Date\+And\+Patient} (\$date, \$patient, \$parcours)
+\begin{DoxyCompactList}\small\item\em Récupère tout les événements d\textquotesingle{}un parcours pour un patient pout une date données. \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_ac00607356a988cc322ac3353fc8f5134}{get\+Parcours\+By\+Date} (\$date)
+\begin{DoxyCompactList}\small\item\em Récupère tout les événement (juste le parcours) pour une date donné \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_a9f56bfecc39a1dbc331dfdacb9557541}{get\+Detail\+Evenement} (\$id\+Activite, \$id\+Parcours, \$id\+Patient, \$date)
+\begin{DoxyCompactList}\small\item\em Récupère les détails d\textquotesingle{}un événement pour une activité, un parcours, un patient et une date donné \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_ab41d539962a52545111d136aff324ea6}{get\+All\+Evenement\+By\+Date} (\$date)
+\begin{DoxyCompactList}\small\item\em Récupère tout les événement (tout les attributs) de la base de données pour une date donné \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_ad34b09b84f2b551e90f10f8a59487ff7}{delete\+Event} (\$id\+Activite, \$id\+Patient, \$id\+Parcours)
+\begin{DoxyCompactList}\small\item\em Supprime un événement de la base de données. \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_ae30966fd39181041d0ed71f60b4dd4f7}{update\+Event} (\$start, \$end, \$id\+Ressource, \$id\+Activite, \$id\+Patient, \$id\+Parcours, \$id)
+\begin{DoxyCompactList}\small\item\em Met à jour un événement de la base de données. \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_aad09d20b96fb6a40dfa2c347d0cc6d6c}{necessite} (\$id\+Activite)
+\begin{DoxyCompactList}\small\item\em Récupére tout les besoins d\textquotesingle{}un événement en fonction de l\textquotesingle{}id de son activité \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_a86a09269af409629a60bf86a2bd19421}{precedence} (\$id\+Activite, \$id\+Parcours)
+\begin{DoxyCompactList}\small\item\em Récupére tout les précédences d\textquotesingle{}une activité d\textquotesingle{}un événement pour un parcours. \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_a9a4a5513520eb81c0d68eebea2efcbe1}{get\+Ressource\+By\+Type} (\$id, \$quantite, \$start, \$end)
+\begin{DoxyCompactList}\small\item\em Récupére tout les ressource disponible entre deux date. \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_a4ae35a403f5ccd0e6cc0bbaa63ba0a61}{get\+Ressource\+Possible\+Pour\+Une\+Activite} (\$id\+Activite)
+\begin{DoxyCompactList}\small\item\em Récupére la liste des ressource possible pour une activité d\textquotesingle{}un événement. \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_aaa5c4efca4bf8509b7e8eae4076ba246}{get\+Activite\+Aplanifier\+Recherche} (\$date, \$recherche)
+\begin{DoxyCompactList}\small\item\em Récupére la liste des activités à planifier pour une date donné en fonction du nom du patient. \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_a63ae0c258ad2fb178f4b3c75a10eb347}{couleur\+\_\+aleatoire} ()
+\begin{DoxyCompactList}\small\item\em Fonction de récupération d\textquotesingle{}une couleur aléatoire. \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_af767bc59ccb16aa1c48e09a49a022bd6}{delete\+All\+Event\+Patient} (\$id\+Patient, \$date)
+\begin{DoxyCompactList}\small\item\em Fonction de suppression de tout les événement lié à un patient pour une date donné \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_a0aac198824080f06e0b99c83c93536fa}{get\+Couleur\+Event\+Patient} (\$id\+Patient)
+\begin{DoxyCompactList}\small\item\em Récupére la couleur d\textquotesingle{}un événement pour un patient. \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_af6dd0d894ed8b352cd3c5dba0542d645}{sauvegarder\+Planning} ()
+\begin{DoxyCompactList}\small\item\em Permet de sauvegarder le planning. \end{DoxyCompactList}\item 
+\hyperlink{class_m___planning_a369517047c830bb2298e908b6d296240}{restaurer\+Planning} ()
+\begin{DoxyCompactList}\small\item\em Permet de restaurer un planning (chargement de la dernière sauvegarder) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{class_m___planning_abafbb98badd73ecbd019d9a4c15cd477}\label{class_m___planning_abafbb98badd73ecbd019d9a4c15cd477}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!add\+Evenement@{add\+Evenement}}
+\index{add\+Evenement@{add\+Evenement}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{add\+Evenement()}{addEvenement()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::add\+Evenement (\begin{DoxyParamCaption}\item[{}]{\$title,  }\item[{}]{\$start,  }\item[{}]{\$end,  }\item[{}]{\$ressource\+Id,  }\item[{}]{\$activite\+Id,  }\item[{}]{\$patient\+Id,  }\item[{}]{\$parcours\+Id }\end{DoxyParamCaption})}
+
+
+
+Ajout d\textquotesingle{}un événement. 
+
+Ajout d\textquotesingle{}un événement dans la base de données 
+\begin{DoxyParams}{Paramètres}
+{\em \$title} & \+: titre de l\textquotesingle{}événement \$end \+: date et heure de fin de l\textquotesingle{}événement \$start \+: date et heure de début \$ressource\+Id \+: ressource lié à l\textquotesingle{}événement \$activite\+Id \+: id de l\textquotesingle{}activité lié à l\textquotesingle{}événement \$patient\+Id \+: id du patient \$parcours\+Id \+: id du parcours \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_a63ae0c258ad2fb178f4b3c75a10eb347}\label{class_m___planning_a63ae0c258ad2fb178f4b3c75a10eb347}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!couleur\+\_\+aleatoire@{couleur\+\_\+aleatoire}}
+\index{couleur\+\_\+aleatoire@{couleur\+\_\+aleatoire}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{couleur\+\_\+aleatoire()}{couleur\_aleatoire()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::couleur\+\_\+aleatoire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fonction de récupération d\textquotesingle{}une couleur aléatoire. 
+
+Fonction de récupération d\textquotesingle{}une couleur aléatoire 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_af767bc59ccb16aa1c48e09a49a022bd6}\label{class_m___planning_af767bc59ccb16aa1c48e09a49a022bd6}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!delete\+All\+Event\+Patient@{delete\+All\+Event\+Patient}}
+\index{delete\+All\+Event\+Patient@{delete\+All\+Event\+Patient}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{delete\+All\+Event\+Patient()}{deleteAllEventPatient()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::delete\+All\+Event\+Patient (\begin{DoxyParamCaption}\item[{}]{\$id\+Patient,  }\item[{}]{\$date }\end{DoxyParamCaption})}
+
+
+
+Fonction de suppression de tout les événement lié à un patient pour une date donné 
+
+Fonction de suppression de tout les événement lié à un patient pour une date donné 
+\begin{DoxyParams}{Paramètres}
+{\em \$id\+Patient} & \+: id du patient \$date \+: date \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_ad34b09b84f2b551e90f10f8a59487ff7}\label{class_m___planning_ad34b09b84f2b551e90f10f8a59487ff7}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!delete\+Event@{delete\+Event}}
+\index{delete\+Event@{delete\+Event}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{delete\+Event()}{deleteEvent()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::delete\+Event (\begin{DoxyParamCaption}\item[{}]{\$id\+Activite,  }\item[{}]{\$id\+Patient,  }\item[{}]{\$id\+Parcours }\end{DoxyParamCaption})}
+
+
+
+Supprime un événement de la base de données. 
+
+Supprime un événement de la base de données en fonction de l\textquotesingle{}id de son activité, l\textquotesingle{}id de son patient et l\textquotesingle{}id de son parcours 
+\begin{DoxyParams}{Paramètres}
+{\em \$id\+Activite} & \+: id de l\textquotesingle{}activité \$id\+Patient \+: id du patient \$id\+Parcours \+: id du parcours \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_ac8e09307ac103e0f2b8bbfa828e7f723}\label{class_m___planning_ac8e09307ac103e0f2b8bbfa828e7f723}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!get\+Activite\+Aplanifier@{get\+Activite\+Aplanifier}}
+\index{get\+Activite\+Aplanifier@{get\+Activite\+Aplanifier}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{get\+Activite\+Aplanifier()}{getActiviteAplanifier()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::get\+Activite\+Aplanifier (\begin{DoxyParamCaption}\item[{}]{\$date }\end{DoxyParamCaption})}
+
+
+
+Récupére toutes les activités à planifier en fonctin d\textquotesingle{}une date donné 
+
+Récupére toutes les activités à planifier en fonctin d\textquotesingle{}une date donné 
+\begin{DoxyParams}{Paramètres}
+{\em \$date} & \+: la date \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_aaa5c4efca4bf8509b7e8eae4076ba246}\label{class_m___planning_aaa5c4efca4bf8509b7e8eae4076ba246}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!get\+Activite\+Aplanifier\+Recherche@{get\+Activite\+Aplanifier\+Recherche}}
+\index{get\+Activite\+Aplanifier\+Recherche@{get\+Activite\+Aplanifier\+Recherche}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{get\+Activite\+Aplanifier\+Recherche()}{getActiviteAplanifierRecherche()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::get\+Activite\+Aplanifier\+Recherche (\begin{DoxyParamCaption}\item[{}]{\$date,  }\item[{}]{\$recherche }\end{DoxyParamCaption})}
+
+
+
+Récupére la liste des activités à planifier pour une date donné en fonction du nom du patient. 
+
+Récupére la liste des activités à planifier pour une date donné en fonction du nom du patient 
+\begin{DoxyParams}{Paramètres}
+{\em \$date} & \+: date \$recherche \+: nom du patient à rechercher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_adaed7f7dad15559184206d3705a9f78a}\label{class_m___planning_adaed7f7dad15559184206d3705a9f78a}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!get\+All\+Evenement@{get\+All\+Evenement}}
+\index{get\+All\+Evenement@{get\+All\+Evenement}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{get\+All\+Evenement()}{getAllEvenement()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::get\+All\+Evenement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Récupère tout les événement de la base de données. 
+
+Récupère tout les événement de la base de données 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_ab41d539962a52545111d136aff324ea6}\label{class_m___planning_ab41d539962a52545111d136aff324ea6}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!get\+All\+Evenement\+By\+Date@{get\+All\+Evenement\+By\+Date}}
+\index{get\+All\+Evenement\+By\+Date@{get\+All\+Evenement\+By\+Date}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{get\+All\+Evenement\+By\+Date()}{getAllEvenementByDate()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::get\+All\+Evenement\+By\+Date (\begin{DoxyParamCaption}\item[{}]{\$date }\end{DoxyParamCaption})}
+
+
+
+Récupère tout les événement (tout les attributs) de la base de données pour une date donné 
+
+Récupère tout les événement (tout les attributs) de la base de données pour une date donné 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_a058d0ecc4af6cfeadea6908cede9dcbb}\label{class_m___planning_a058d0ecc4af6cfeadea6908cede9dcbb}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!get\+All\+Ressource@{get\+All\+Ressource}}
+\index{get\+All\+Ressource@{get\+All\+Ressource}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{get\+All\+Ressource()}{getAllRessource()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::get\+All\+Ressource (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Récupére toutes les ressource humaines ou matérielles. 
+
+Récupére toutes les ressource humaines ou matérielles 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_a0aac198824080f06e0b99c83c93536fa}\label{class_m___planning_a0aac198824080f06e0b99c83c93536fa}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!get\+Couleur\+Event\+Patient@{get\+Couleur\+Event\+Patient}}
+\index{get\+Couleur\+Event\+Patient@{get\+Couleur\+Event\+Patient}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{get\+Couleur\+Event\+Patient()}{getCouleurEventPatient()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::get\+Couleur\+Event\+Patient (\begin{DoxyParamCaption}\item[{}]{\$id\+Patient }\end{DoxyParamCaption})}
+
+
+
+Récupére la couleur d\textquotesingle{}un événement pour un patient. 
+
+Récupére la couleur d\textquotesingle{}un événement pour un patient 
+\begin{DoxyParams}{Paramètres}
+{\em \$id\+Patient} & \+: id du patient \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_a9f56bfecc39a1dbc331dfdacb9557541}\label{class_m___planning_a9f56bfecc39a1dbc331dfdacb9557541}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!get\+Detail\+Evenement@{get\+Detail\+Evenement}}
+\index{get\+Detail\+Evenement@{get\+Detail\+Evenement}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{get\+Detail\+Evenement()}{getDetailEvenement()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::get\+Detail\+Evenement (\begin{DoxyParamCaption}\item[{}]{\$id\+Activite,  }\item[{}]{\$id\+Parcours,  }\item[{}]{\$id\+Patient,  }\item[{}]{\$date }\end{DoxyParamCaption})}
+
+
+
+Récupère les détails d\textquotesingle{}un événement pour une activité, un parcours, un patient et une date donné 
+
+Récupère les détails d\textquotesingle{}un événement pour une activité, un parcours, un patient et une date donné 
+\begin{DoxyParams}{Paramètres}
+{\em \$date} & \+: date \$id\+Activite \+: id de l\textquotesingle{}activité \$id\+Parcours \+: id du parcours \$id\+Patient \+: id du patient \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_ac00607356a988cc322ac3353fc8f5134}\label{class_m___planning_ac00607356a988cc322ac3353fc8f5134}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!get\+Parcours\+By\+Date@{get\+Parcours\+By\+Date}}
+\index{get\+Parcours\+By\+Date@{get\+Parcours\+By\+Date}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{get\+Parcours\+By\+Date()}{getParcoursByDate()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::get\+Parcours\+By\+Date (\begin{DoxyParamCaption}\item[{}]{\$date }\end{DoxyParamCaption})}
+
+
+
+Récupère tout les événement (juste le parcours) pour une date donné 
+
+Récupère tout les événement (juste le parcours) pour une date donné 
+\begin{DoxyParams}{Paramètres}
+{\em \$date} & \+: date \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_a6a9b1fa1202b0171f8ceb3e69717e2bb}\label{class_m___planning_a6a9b1fa1202b0171f8ceb3e69717e2bb}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!get\+Parcours\+By\+Date\+And\+Patient@{get\+Parcours\+By\+Date\+And\+Patient}}
+\index{get\+Parcours\+By\+Date\+And\+Patient@{get\+Parcours\+By\+Date\+And\+Patient}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{get\+Parcours\+By\+Date\+And\+Patient()}{getParcoursByDateAndPatient()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::get\+Parcours\+By\+Date\+And\+Patient (\begin{DoxyParamCaption}\item[{}]{\$date,  }\item[{}]{\$patient,  }\item[{}]{\$parcours }\end{DoxyParamCaption})}
+
+
+
+Récupère tout les événements d\textquotesingle{}un parcours pour un patient pout une date données. 
+
+Récupère tout les événements d\textquotesingle{}un parcours pour un patient pout une date données 
+\begin{DoxyParams}{Paramètres}
+{\em \$date} & \+: date \$patient \+: l\textquotesingle{}id du patient \$parcours \+: id du parcours \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_a9a4a5513520eb81c0d68eebea2efcbe1}\label{class_m___planning_a9a4a5513520eb81c0d68eebea2efcbe1}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!get\+Ressource\+By\+Type@{get\+Ressource\+By\+Type}}
+\index{get\+Ressource\+By\+Type@{get\+Ressource\+By\+Type}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{get\+Ressource\+By\+Type()}{getRessourceByType()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::get\+Ressource\+By\+Type (\begin{DoxyParamCaption}\item[{}]{\$id,  }\item[{}]{\$quantite,  }\item[{}]{\$start,  }\item[{}]{\$end }\end{DoxyParamCaption})}
+
+
+
+Récupére tout les ressource disponible entre deux date. 
+
+Récupére tout les ressource disponible entre deux date 
+\begin{DoxyParams}{Paramètres}
+{\em \$id} & \+: id du type de ressource \$quantite \+: retourne la quantite \$start \+: date de début \$end \+: date de fin \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_a4ae35a403f5ccd0e6cc0bbaa63ba0a61}\label{class_m___planning_a4ae35a403f5ccd0e6cc0bbaa63ba0a61}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!get\+Ressource\+Possible\+Pour\+Une\+Activite@{get\+Ressource\+Possible\+Pour\+Une\+Activite}}
+\index{get\+Ressource\+Possible\+Pour\+Une\+Activite@{get\+Ressource\+Possible\+Pour\+Une\+Activite}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{get\+Ressource\+Possible\+Pour\+Une\+Activite()}{getRessourcePossiblePourUneActivite()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::get\+Ressource\+Possible\+Pour\+Une\+Activite (\begin{DoxyParamCaption}\item[{}]{\$id\+Activite }\end{DoxyParamCaption})}
+
+
+
+Récupére la liste des ressource possible pour une activité d\textquotesingle{}un événement. 
+
+Récupére la liste des ressource possible pour une activité d\textquotesingle{}un événement 
+\begin{DoxyParams}{Paramètres}
+{\em \$id\+Activite} & \+: id de l\textquotesingle{}activite \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_aad09d20b96fb6a40dfa2c347d0cc6d6c}\label{class_m___planning_aad09d20b96fb6a40dfa2c347d0cc6d6c}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!necessite@{necessite}}
+\index{necessite@{necessite}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{necessite()}{necessite()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::necessite (\begin{DoxyParamCaption}\item[{}]{\$id\+Activite }\end{DoxyParamCaption})}
+
+
+
+Récupére tout les besoins d\textquotesingle{}un événement en fonction de l\textquotesingle{}id de son activité 
+
+Récupére tout les besoins d\textquotesingle{}un événement en fonction de l\textquotesingle{}id de son activité 
+\begin{DoxyParams}{Paramètres}
+{\em \$id\+Activite} & \+: id de l\textquotesingle{}activité de l\textquotesingle{}événement \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_a86a09269af409629a60bf86a2bd19421}\label{class_m___planning_a86a09269af409629a60bf86a2bd19421}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!precedence@{precedence}}
+\index{precedence@{precedence}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{precedence()}{precedence()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::precedence (\begin{DoxyParamCaption}\item[{}]{\$id\+Activite,  }\item[{}]{\$id\+Parcours }\end{DoxyParamCaption})}
+
+
+
+Récupére tout les précédences d\textquotesingle{}une activité d\textquotesingle{}un événement pour un parcours. 
+
+Récupére tout les précédences d\textquotesingle{}une activité d\textquotesingle{}un événement pour un parcours 
+\begin{DoxyParams}{Paramètres}
+{\em \$id\+Activite} & \+: id de l\textquotesingle{}activité de l\textquotesingle{}événement \$id\+Parcours \+: id du parcours \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_a369517047c830bb2298e908b6d296240}\label{class_m___planning_a369517047c830bb2298e908b6d296240}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!restaurer\+Planning@{restaurer\+Planning}}
+\index{restaurer\+Planning@{restaurer\+Planning}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{restaurer\+Planning()}{restaurerPlanning()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::restaurer\+Planning (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet de restaurer un planning (chargement de la dernière sauvegarder) 
+
+La restauration d\textquotesingle{}un planning entraine la suppression des modifications non enregistrés 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_af6dd0d894ed8b352cd3c5dba0542d645}\label{class_m___planning_af6dd0d894ed8b352cd3c5dba0542d645}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!sauvegarder\+Planning@{sauvegarder\+Planning}}
+\index{sauvegarder\+Planning@{sauvegarder\+Planning}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{sauvegarder\+Planning()}{sauvegarderPlanning()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::sauvegarder\+Planning (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet de sauvegarder le planning. 
+
+Sauvegarde le planning (suppresion des événement déha planifié) 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___planning_ae30966fd39181041d0ed71f60b4dd4f7}\label{class_m___planning_ae30966fd39181041d0ed71f60b4dd4f7}} 
+\index{M\+\_\+\+Planning@{M\+\_\+\+Planning}!update\+Event@{update\+Event}}
+\index{update\+Event@{update\+Event}!M\+\_\+\+Planning@{M\+\_\+\+Planning}}
+\subsubsection{\texorpdfstring{update\+Event()}{updateEvent()}}
+{\footnotesize\ttfamily M\+\_\+\+Planning\+::update\+Event (\begin{DoxyParamCaption}\item[{}]{\$start,  }\item[{}]{\$end,  }\item[{}]{\$id\+Ressource,  }\item[{}]{\$id\+Activite,  }\item[{}]{\$id\+Patient,  }\item[{}]{\$id\+Parcours,  }\item[{}]{\$id }\end{DoxyParamCaption})}
+
+
+
+Met à jour un événement de la base de données. 
+
+Met à jour un événement de la base de données 
+\begin{DoxyParams}{Paramètres}
+{\em \$id\+Activite} & \+: id de l\textquotesingle{}activité \$id\+Patient \+: id du patient \$id\+Parcours \+: id du parcours \$id\+Ressource \+: id de la ressource \$start \+: date de début de l\textquotesingle{}événement \$end \+: date de fin de l\textquotesingle{}activité \$id \+: id de l\textquotesingle{}événement à modifier \\
+\hline
+\end{DoxyParams}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+app/models/\hyperlink{_m___planning_8php}{M\+\_\+\+Planning.\+php}\end{DoxyCompactItemize}

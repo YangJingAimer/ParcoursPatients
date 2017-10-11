@@ -1,0 +1,206 @@
+\hypertarget{class_m___patient}{}\section{Référence de la classe M\+\_\+\+Patient}
+\label{class_m___patient}\index{M\+\_\+\+Patient@{M\+\_\+\+Patient}}
+Graphe d\textquotesingle{}héritage de M\+\_\+\+Patient\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_m___patient}
+\end{center}
+\end{figure}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m___patient_ae78fc7c3ec0e22745e48533c903ecd04}{get\+Max\+Id\+Patient} ()
+\begin{DoxyCompactList}\small\item\em Récupére l\textquotesingle{}id max des patients. \end{DoxyCompactList}\item 
+\hyperlink{class_m___patient_ad46c826cf873513020c2a38c4955f55c}{get\+Max\+Id\+Compte} ()
+\begin{DoxyCompactList}\small\item\em Récupére l\textquotesingle{}id max des comptes. \end{DoxyCompactList}\item 
+\hyperlink{class_m___patient_aa84f7a3be1a139c0392af7f48ba5de9f}{ajouter\+Un\+Patient} (\$uname, \$pwd, \$nom, \$prenom, \$adressenum, \$adresseure, \$codepostale, \$ville, \$pays, \$mail, \$telefix, \$tele, \$numsecu, \$naissance, \$id\+Parcours, \$date\+Debut, \$date\+Fin)
+\begin{DoxyCompactList}\small\item\em Méthode d\textquotesingle{}ajout d\textquotesingle{}un nouveau patient. \end{DoxyCompactList}\item 
+\hyperlink{class_m___patient_af56fef6b964aea361b041c9cbadf7883}{modifier\+Un\+Patient} (\$idpatient, \$nom, \$prenom, \$adressenum, \$adresseure, \$codepostale, \$ville, \$pays, \$mail, \$telefix, \$tele, \$numsecu, \$naissance)
+\begin{DoxyCompactList}\small\item\em Méthode de modification d\textquotesingle{}un patient. \end{DoxyCompactList}\item 
+\hyperlink{class_m___patient_a052c759daf4e12f106ad1f87918dd3e1}{afficher\+Tous\+Patient} ()
+\begin{DoxyCompactList}\small\item\em Affiche la liste de tout les patients. \end{DoxyCompactList}\item 
+\hyperlink{class_m___patient_a2b41b0d0ce073bf55991a632e0206b3e}{creer\+Un\+Compte} (\$uname, \$pwd)
+\begin{DoxyCompactList}\small\item\em Méthode de création d\textquotesingle{}un compte. \end{DoxyCompactList}\item 
+\hyperlink{class_m___patient_a6a24b9381e5a3c218fd5fac44ceee18f}{nombre\+De\+Patient\+Parcour} (\$idparcours, \$datedebut)
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de patient d\textquotesingle{}un parcours en fonction d\textquotesingle{}une date de début. \end{DoxyCompactList}\item 
+\hyperlink{class_m___patient_a7c2dbb60dd76caa57488fc721758a2fe}{get\+All\+Activities} (\$id\+Patient)
+\begin{DoxyCompactList}\small\item\em Permet de récupérer toutes les activités effecutées (ou en cours) d\textquotesingle{}un patient. \end{DoxyCompactList}\item 
+\hyperlink{class_m___patient_aad31452d1a9feb24d210dd6c5b7d8889}{maj\+Disponibilite\+Patient} (\$id\+Patient, \$id\+Parcours, \$date\+Debut, \$date\+Fin)
+\begin{DoxyCompactList}\small\item\em Mettre à jour les disponibilités d\textquotesingle{}un patient. \end{DoxyCompactList}\item 
+\hyperlink{class_m___patient_ae756ff875e1058f4259c39f8ab801a29}{patient\+Par\+Nom\+Ou\+Prenom} (\$recherche)
+\begin{DoxyCompactList}\small\item\em Recherche d\textquotesingle{}un patient par nom ou prenom. \end{DoxyCompactList}\item 
+\hyperlink{class_m___patient_aac67ed7396fd641e440458843e24f8f5}{get\+Patient\+By\+Id} (\$id)
+\begin{DoxyCompactList}\small\item\em Retourne toute les informations d\textquotesingle{}un patient en fonction de son id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{class_m___patient_a052c759daf4e12f106ad1f87918dd3e1}\label{class_m___patient_a052c759daf4e12f106ad1f87918dd3e1}} 
+\index{M\+\_\+\+Patient@{M\+\_\+\+Patient}!afficher\+Tous\+Patient@{afficher\+Tous\+Patient}}
+\index{afficher\+Tous\+Patient@{afficher\+Tous\+Patient}!M\+\_\+\+Patient@{M\+\_\+\+Patient}}
+\subsubsection{\texorpdfstring{afficher\+Tous\+Patient()}{afficherTousPatient()}}
+{\footnotesize\ttfamily M\+\_\+\+Patient\+::afficher\+Tous\+Patient (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Affiche la liste de tout les patients. 
+
+Affiche la liste de tout les patients 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___patient_aa84f7a3be1a139c0392af7f48ba5de9f}\label{class_m___patient_aa84f7a3be1a139c0392af7f48ba5de9f}} 
+\index{M\+\_\+\+Patient@{M\+\_\+\+Patient}!ajouter\+Un\+Patient@{ajouter\+Un\+Patient}}
+\index{ajouter\+Un\+Patient@{ajouter\+Un\+Patient}!M\+\_\+\+Patient@{M\+\_\+\+Patient}}
+\subsubsection{\texorpdfstring{ajouter\+Un\+Patient()}{ajouterUnPatient()}}
+{\footnotesize\ttfamily M\+\_\+\+Patient\+::ajouter\+Un\+Patient (\begin{DoxyParamCaption}\item[{}]{\$uname,  }\item[{}]{\$pwd,  }\item[{}]{\$nom,  }\item[{}]{\$prenom,  }\item[{}]{\$adressenum,  }\item[{}]{\$adresseure,  }\item[{}]{\$codepostale,  }\item[{}]{\$ville,  }\item[{}]{\$pays,  }\item[{}]{\$mail,  }\item[{}]{\$telefix,  }\item[{}]{\$tele,  }\item[{}]{\$numsecu,  }\item[{}]{\$naissance,  }\item[{}]{\$id\+Parcours,  }\item[{}]{\$date\+Debut,  }\item[{}]{\$date\+Fin }\end{DoxyParamCaption})}
+
+
+
+Méthode d\textquotesingle{}ajout d\textquotesingle{}un nouveau patient. 
+
+Méthode d\textquotesingle{}ajout d\textquotesingle{}un nouveau patient et d\textquotesingle{}un compte à un patient 
+\begin{DoxyParams}{Paramètres}
+{\em \$uname} & \+: login du patient sous la forme (nom.\+prenom) \$password \+: mot de passe sous la forme (date de naissance) \$nom \+: nom du patient \$prenom \+: prenom du patient \$adressenum \+: numéro de rue du patient \$code\+Postale \+: code postal du patient \$ville \+: ville du patient \$apays \+: pays du patient \$mail \+: mail du patient \$telefix \+: téléphone fixe du patient \$tele \+: téléphone portable \$numsecu \+: numéro de sécurité sociale du patient \$naissance \+: date de naissance du patient \$id\+Parcours \+: parcours que le patient doit effectué \$date\+Debut \+: date de début de dispo du patient \$date\+Fin \+: date de fin de dispo du patient \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___patient_a2b41b0d0ce073bf55991a632e0206b3e}\label{class_m___patient_a2b41b0d0ce073bf55991a632e0206b3e}} 
+\index{M\+\_\+\+Patient@{M\+\_\+\+Patient}!creer\+Un\+Compte@{creer\+Un\+Compte}}
+\index{creer\+Un\+Compte@{creer\+Un\+Compte}!M\+\_\+\+Patient@{M\+\_\+\+Patient}}
+\subsubsection{\texorpdfstring{creer\+Un\+Compte()}{creerUnCompte()}}
+{\footnotesize\ttfamily M\+\_\+\+Patient\+::creer\+Un\+Compte (\begin{DoxyParamCaption}\item[{}]{\$uname,  }\item[{}]{\$pwd }\end{DoxyParamCaption})}
+
+
+
+Méthode de création d\textquotesingle{}un compte. 
+
+Méthode de création d\textquotesingle{}un compte 
+\begin{DoxyParams}{Paramètres}
+{\em \$uname} & \+: login \$pwd \+: mot de passe \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___patient_a7c2dbb60dd76caa57488fc721758a2fe}\label{class_m___patient_a7c2dbb60dd76caa57488fc721758a2fe}} 
+\index{M\+\_\+\+Patient@{M\+\_\+\+Patient}!get\+All\+Activities@{get\+All\+Activities}}
+\index{get\+All\+Activities@{get\+All\+Activities}!M\+\_\+\+Patient@{M\+\_\+\+Patient}}
+\subsubsection{\texorpdfstring{get\+All\+Activities()}{getAllActivities()}}
+{\footnotesize\ttfamily M\+\_\+\+Patient\+::get\+All\+Activities (\begin{DoxyParamCaption}\item[{}]{\$id\+Patient }\end{DoxyParamCaption})}
+
+
+
+Permet de récupérer toutes les activités effecutées (ou en cours) d\textquotesingle{}un patient. 
+
+Permet de récupérer toutes les activités effecutées (ou en cours) d\textquotesingle{}un patient 
+\begin{DoxyParams}{Paramètres}
+{\em \$id\+Patient} & \+: l\textquotesingle{}id du patient \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___patient_ad46c826cf873513020c2a38c4955f55c}\label{class_m___patient_ad46c826cf873513020c2a38c4955f55c}} 
+\index{M\+\_\+\+Patient@{M\+\_\+\+Patient}!get\+Max\+Id\+Compte@{get\+Max\+Id\+Compte}}
+\index{get\+Max\+Id\+Compte@{get\+Max\+Id\+Compte}!M\+\_\+\+Patient@{M\+\_\+\+Patient}}
+\subsubsection{\texorpdfstring{get\+Max\+Id\+Compte()}{getMaxIdCompte()}}
+{\footnotesize\ttfamily M\+\_\+\+Patient\+::get\+Max\+Id\+Compte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Récupére l\textquotesingle{}id max des comptes. 
+
+Récupére l\textquotesingle{}id max des comptes 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___patient_ae78fc7c3ec0e22745e48533c903ecd04}\label{class_m___patient_ae78fc7c3ec0e22745e48533c903ecd04}} 
+\index{M\+\_\+\+Patient@{M\+\_\+\+Patient}!get\+Max\+Id\+Patient@{get\+Max\+Id\+Patient}}
+\index{get\+Max\+Id\+Patient@{get\+Max\+Id\+Patient}!M\+\_\+\+Patient@{M\+\_\+\+Patient}}
+\subsubsection{\texorpdfstring{get\+Max\+Id\+Patient()}{getMaxIdPatient()}}
+{\footnotesize\ttfamily M\+\_\+\+Patient\+::get\+Max\+Id\+Patient (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Récupére l\textquotesingle{}id max des patients. 
+
+Récupére l\textquotesingle{}id max des patients 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___patient_aac67ed7396fd641e440458843e24f8f5}\label{class_m___patient_aac67ed7396fd641e440458843e24f8f5}} 
+\index{M\+\_\+\+Patient@{M\+\_\+\+Patient}!get\+Patient\+By\+Id@{get\+Patient\+By\+Id}}
+\index{get\+Patient\+By\+Id@{get\+Patient\+By\+Id}!M\+\_\+\+Patient@{M\+\_\+\+Patient}}
+\subsubsection{\texorpdfstring{get\+Patient\+By\+Id()}{getPatientById()}}
+{\footnotesize\ttfamily M\+\_\+\+Patient\+::get\+Patient\+By\+Id (\begin{DoxyParamCaption}\item[{}]{\$id }\end{DoxyParamCaption})}
+
+
+
+Retourne toute les informations d\textquotesingle{}un patient en fonction de son id. 
+
+Retourne toute les informations d\textquotesingle{}un patient en fonction de son id 
+\begin{DoxyParams}{Paramètres}
+{\em \$id} & \+: id du patient \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___patient_aad31452d1a9feb24d210dd6c5b7d8889}\label{class_m___patient_aad31452d1a9feb24d210dd6c5b7d8889}} 
+\index{M\+\_\+\+Patient@{M\+\_\+\+Patient}!maj\+Disponibilite\+Patient@{maj\+Disponibilite\+Patient}}
+\index{maj\+Disponibilite\+Patient@{maj\+Disponibilite\+Patient}!M\+\_\+\+Patient@{M\+\_\+\+Patient}}
+\subsubsection{\texorpdfstring{maj\+Disponibilite\+Patient()}{majDisponibilitePatient()}}
+{\footnotesize\ttfamily M\+\_\+\+Patient\+::maj\+Disponibilite\+Patient (\begin{DoxyParamCaption}\item[{}]{\$id\+Patient,  }\item[{}]{\$id\+Parcours,  }\item[{}]{\$date\+Debut,  }\item[{}]{\$date\+Fin }\end{DoxyParamCaption})}
+
+
+
+Mettre à jour les disponibilités d\textquotesingle{}un patient. 
+
+Mettre à jour les disponibilités d\textquotesingle{}un patient 
+\begin{DoxyParams}{Paramètres}
+{\em \$id\+Patient} & \+: l\textquotesingle{}id du patient \$id\+Parcours \+: l\textquotesingle{}id du parcours \$date\+Debut \+: date de début de dispo du patient \$date\+Fin \+: dtae de fin de dispo du patient \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___patient_af56fef6b964aea361b041c9cbadf7883}\label{class_m___patient_af56fef6b964aea361b041c9cbadf7883}} 
+\index{M\+\_\+\+Patient@{M\+\_\+\+Patient}!modifier\+Un\+Patient@{modifier\+Un\+Patient}}
+\index{modifier\+Un\+Patient@{modifier\+Un\+Patient}!M\+\_\+\+Patient@{M\+\_\+\+Patient}}
+\subsubsection{\texorpdfstring{modifier\+Un\+Patient()}{modifierUnPatient()}}
+{\footnotesize\ttfamily M\+\_\+\+Patient\+::modifier\+Un\+Patient (\begin{DoxyParamCaption}\item[{}]{\$idpatient,  }\item[{}]{\$nom,  }\item[{}]{\$prenom,  }\item[{}]{\$adressenum,  }\item[{}]{\$adresseure,  }\item[{}]{\$codepostale,  }\item[{}]{\$ville,  }\item[{}]{\$pays,  }\item[{}]{\$mail,  }\item[{}]{\$telefix,  }\item[{}]{\$tele,  }\item[{}]{\$numsecu,  }\item[{}]{\$naissance }\end{DoxyParamCaption})}
+
+
+
+Méthode de modification d\textquotesingle{}un patient. 
+
+Méthode de modification d\textquotesingle{}un patient 
+\begin{DoxyParams}{Paramètres}
+{\em \$nom} & \+: nom du patient \$prenom \+: prenom du patient \$adressenum \+: numéro de rue du patient \$code\+Postale \+: code postal du patient \$ville \+: ville du patient \$apays \+: pays du patient \$mail \+: mail du patient \$telefix \+: téléphone fixe du patient \$numsecu \+: numéro de sécurité sociale du patient \$naissance \+: date de naissance du patient \$id\+Patient \+: id du patient à modifié \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m___patient_a6a24b9381e5a3c218fd5fac44ceee18f}\label{class_m___patient_a6a24b9381e5a3c218fd5fac44ceee18f}} 
+\index{M\+\_\+\+Patient@{M\+\_\+\+Patient}!nombre\+De\+Patient\+Parcour@{nombre\+De\+Patient\+Parcour}}
+\index{nombre\+De\+Patient\+Parcour@{nombre\+De\+Patient\+Parcour}!M\+\_\+\+Patient@{M\+\_\+\+Patient}}
+\subsubsection{\texorpdfstring{nombre\+De\+Patient\+Parcour()}{nombreDePatientParcour()}}
+{\footnotesize\ttfamily M\+\_\+\+Patient\+::nombre\+De\+Patient\+Parcour (\begin{DoxyParamCaption}\item[{}]{\$idparcours,  }\item[{}]{\$datedebut }\end{DoxyParamCaption})}
+
+
+
+Retourne le nombre de patient d\textquotesingle{}un parcours en fonction d\textquotesingle{}une date de début. 
+
+Retourne le nombre de patient d\textquotesingle{}un parcours en fonction d\textquotesingle{}une date de début 
+\begin{DoxyParams}{Paramètres}
+{\em \$id\+Parcours} & \+: l\textquotesingle{}id du parcours \$datedebut \+: date de début \\
+\hline
+\end{DoxyParams}
+Nombre de parcours ordonnnancé $\ast$ \mbox{\Hypertarget{class_m___patient_ae756ff875e1058f4259c39f8ab801a29}\label{class_m___patient_ae756ff875e1058f4259c39f8ab801a29}} 
+\index{M\+\_\+\+Patient@{M\+\_\+\+Patient}!patient\+Par\+Nom\+Ou\+Prenom@{patient\+Par\+Nom\+Ou\+Prenom}}
+\index{patient\+Par\+Nom\+Ou\+Prenom@{patient\+Par\+Nom\+Ou\+Prenom}!M\+\_\+\+Patient@{M\+\_\+\+Patient}}
+\subsubsection{\texorpdfstring{patient\+Par\+Nom\+Ou\+Prenom()}{patientParNomOuPrenom()}}
+{\footnotesize\ttfamily M\+\_\+\+Patient\+::patient\+Par\+Nom\+Ou\+Prenom (\begin{DoxyParamCaption}\item[{}]{\$recherche }\end{DoxyParamCaption})}
+
+
+
+Recherche d\textquotesingle{}un patient par nom ou prenom. 
+
+Recherche d\textquotesingle{}un patient par nom ou prenom 
+\begin{DoxyParams}{Paramètres}
+{\em \$recherche} & \+: chaine de recherche d\textquotesingle{}un patient \\
+\hline
+\end{DoxyParams}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+app/models/\hyperlink{_m___patient_8php}{M\+\_\+\+Patient.\+php}\end{DoxyCompactItemize}

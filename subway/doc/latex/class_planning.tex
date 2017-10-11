@@ -1,0 +1,265 @@
+\hypertarget{class_planning}{}\section{Référence de la classe Planning}
+\label{class_planning}\index{Planning@{Planning}}
+Graphe d\textquotesingle{}héritage de Planning\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_planning}
+\end{center}
+\end{figure}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_planning_a146136bb4d11559d4e1e03ee27cdc1d5}{\+\_\+\+\_\+construct} ()
+\item 
+\hyperlink{class_planning_a9d08178f98ae683a155391a6dbfbf8ed}{planifier} ()
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}afficher la vue de plannfication générale. \end{DoxyCompactList}\item 
+\hyperlink{class_planning_ab6b4d7163168dc39004b3efc72b03864}{creer\+Jeux\+De\+Donnees} ()
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}afficher la page de création de jeux de données. \end{DoxyCompactList}\item 
+\hyperlink{class_planning_a43c29aa96386074e1970bd897ff35a7f}{creer\+Donnees} ()
+\item 
+\hyperlink{class_planning_a6eb383b4098e8ba4e077e38b580ebc20}{get\+Ressources} ()
+\begin{DoxyCompactList}\small\item\em Permet de récupérer la liste de toutes les ressource humaines ou matérielles. \end{DoxyCompactList}\item 
+\hyperlink{class_planning_a0e4778f75bae9880dac4dcef097e0196}{get\+Evenement} ()
+\begin{DoxyCompactList}\small\item\em Permet de récupérer la liste de tout les événement à ajouter au planning. \end{DoxyCompactList}\item 
+\hyperlink{class_planning_a5e204727ba60baf33ea8e45ffd57459c}{get\+Activite\+A\+Planifier} ()
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}afficher la liste de toutes les activités à plannifier. \end{DoxyCompactList}\item 
+\hyperlink{class_planning_a37907a80875259e9962aacda1e9431cd}{get\+Activite\+A\+Planifier\+Recherche} ()
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}afficher la liste de toutes les activités à plannifier en recherchant un nom de patient. \end{DoxyCompactList}\item 
+\hyperlink{class_planning_a84bf8d328b55382259fb2b7fc20de09a}{add\+Event} ()
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}ajouter un événement. \end{DoxyCompactList}\item 
+\hyperlink{class_planning_a197c471a87c2aec5de71515df72b0500}{delete\+Event} ()
+\begin{DoxyCompactList}\small\item\em Permet de supprimer un événement. \end{DoxyCompactList}\item 
+\hyperlink{class_planning_ac05390330a3ae8718841eeb0a641c59d}{constraints} ()
+\begin{DoxyCompactList}\small\item\em Permet de vérifier les contraintes liés à la planification. \end{DoxyCompactList}\item 
+\hyperlink{class_planning_a98d895eb72d210bad07437f5b0a395b1}{update\+Event} ()
+\begin{DoxyCompactList}\small\item\em Permet de mettre à jour un événement. \end{DoxyCompactList}\item 
+\hyperlink{class_planning_acff72c08ea0453801ab71d6d49e69c39}{delete\+Events\+Patient} ()
+\begin{DoxyCompactList}\small\item\em Permet de supprimer tout les événements liés à un patient pour une date donné \end{DoxyCompactList}\item 
+\hyperlink{class_planning_aeb1146ae1c0a9e5f31214b9dbced1140}{sauvegarder} ()
+\begin{DoxyCompactList}\small\item\em Permet de sauvegarder le planning. \end{DoxyCompactList}\item 
+\hyperlink{class_planning_a419130e49b8ddc19ffa6f8febbcb722d}{restaurer} ()
+\begin{DoxyCompactList}\small\item\em Permet de restaurer (reprise de la dernière sauvegarde) le planning. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{class_planning_a146136bb4d11559d4e1e03ee27cdc1d5}\label{class_planning_a146136bb4d11559d4e1e03ee27cdc1d5}} 
+\index{Planning@{Planning}!\+\_\+\+\_\+construct@{\+\_\+\+\_\+construct}}
+\index{\+\_\+\+\_\+construct@{\+\_\+\+\_\+construct}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+construct()}{\_\_construct()}}
+{\footnotesize\ttfamily Planning\+::\+\_\+\+\_\+construct (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{class_planning_a84bf8d328b55382259fb2b7fc20de09a}\label{class_planning_a84bf8d328b55382259fb2b7fc20de09a}} 
+\index{Planning@{Planning}!add\+Event@{add\+Event}}
+\index{add\+Event@{add\+Event}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{add\+Event()}{addEvent()}}
+{\footnotesize\ttfamily Planning\+::add\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}ajouter un événement. 
+
+Permet d\textquotesingle{}ajouter un événement Récupére la liste des informations d\textquotesingle{}un événement et les ajoute en base de données 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_planning_ac05390330a3ae8718841eeb0a641c59d}\label{class_planning_ac05390330a3ae8718841eeb0a641c59d}} 
+\index{Planning@{Planning}!constraints@{constraints}}
+\index{constraints@{constraints}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{constraints()}{constraints()}}
+{\footnotesize\ttfamily Planning\+::constraints (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet de vérifier les contraintes liés à la planification. 
+
+Permet de vérifier les contraintes liés à la planification Retourne la liste des contraintes au format J\+S\+ON \+: 0\+:\char`\"{}\+Toutes les activités ne sont pas planifiées.\char`\"{} 1\+:\char`\"{}\+Un patient ne peut pas faire 2 activités à la fois. (\+Patient \+: Robert Garcia)\char`\"{}
+
+Voici la liste des contraintes à vérifier \+:
+
+Vérfier fenetre de temps du patient -\/ 1 -\/ F\+A\+IT Delai min et max entre chaque activités d\textquotesingle{}un même pp -\/ 2 -\/ F\+A\+IT Précédences dans un pp -\/ 3 -\/ F\+A\+IT Affecter ressources à une activité + vérifier le nombre -\/ 4 -\/\+F\+A\+IT Toutes les activités sont planifiés -\/ 5-\/ F\+A\+IT Ressources synchronisés -\/ 6 -\/ F\+A\+IT 1 ressource = 1 activité à la fois -\/ 7 -\/ F\+A\+IT
+
+1 \+: gérer avec les contraintes 2 \+: gérer avec les contraintes 3 \+: gérer avec les contraintes 4 \+: Type ressource affecté gérer avec full\+Calenda, vérifier le nombre avec les contraintes 5 \+: gérer avec les contraintes 6 \+: gérer avec full\+Calendar 7 \+: gérer avec les contraintes 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_planning_a43c29aa96386074e1970bd897ff35a7f}\label{class_planning_a43c29aa96386074e1970bd897ff35a7f}} 
+\index{Planning@{Planning}!creer\+Donnees@{creer\+Donnees}}
+\index{creer\+Donnees@{creer\+Donnees}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{creer\+Donnees()}{creerDonnees()}}
+{\footnotesize\ttfamily Planning\+::creer\+Donnees (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_planning_ab6b4d7163168dc39004b3efc72b03864}\label{class_planning_ab6b4d7163168dc39004b3efc72b03864}} 
+\index{Planning@{Planning}!creer\+Jeux\+De\+Donnees@{creer\+Jeux\+De\+Donnees}}
+\index{creer\+Jeux\+De\+Donnees@{creer\+Jeux\+De\+Donnees}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{creer\+Jeux\+De\+Donnees()}{creerJeuxDeDonnees()}}
+{\footnotesize\ttfamily Planning\+::creer\+Jeux\+De\+Donnees (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}afficher la page de création de jeux de données. 
+
+Permet d\textquotesingle{}afficher la page de création de jeux de données 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_planning_a197c471a87c2aec5de71515df72b0500}\label{class_planning_a197c471a87c2aec5de71515df72b0500}} 
+\index{Planning@{Planning}!delete\+Event@{delete\+Event}}
+\index{delete\+Event@{delete\+Event}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{delete\+Event()}{deleteEvent()}}
+{\footnotesize\ttfamily Planning\+::delete\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet de supprimer un événement. 
+
+Permet de supprimer un événement de la base de données 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_planning_acff72c08ea0453801ab71d6d49e69c39}\label{class_planning_acff72c08ea0453801ab71d6d49e69c39}} 
+\index{Planning@{Planning}!delete\+Events\+Patient@{delete\+Events\+Patient}}
+\index{delete\+Events\+Patient@{delete\+Events\+Patient}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{delete\+Events\+Patient()}{deleteEventsPatient()}}
+{\footnotesize\ttfamily Planning\+::delete\+Events\+Patient (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet de supprimer tout les événements liés à un patient pour une date donné 
+
+Permet de supprimer tout les événements liés à un patient pour une date donné 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_planning_a5e204727ba60baf33ea8e45ffd57459c}\label{class_planning_a5e204727ba60baf33ea8e45ffd57459c}} 
+\index{Planning@{Planning}!get\+Activite\+A\+Planifier@{get\+Activite\+A\+Planifier}}
+\index{get\+Activite\+A\+Planifier@{get\+Activite\+A\+Planifier}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{get\+Activite\+A\+Planifier()}{getActiviteAPlanifier()}}
+{\footnotesize\ttfamily Planning\+::get\+Activite\+A\+Planifier (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}afficher la liste de toutes les activités à plannifier. 
+
+Permet d\textquotesingle{}afficher la liste de toutes les activités à plannifier pour une date données Retourne la liste des activités au format J\+S\+ON \+: \{activite\+\_\+id\+:\char`\"{}1\char`\"{}, activite\+\_\+precedente\+:\char`\"{}\+Début\char`\"{}, duree\+:\char`\"{}0\+:20\+:0\char`\"{}, necessite\+:\char`\"{}1 I\+D\+E obésité, 1 H\+D\+J obésité\char`\"{}, nom\+\_\+activite\+:\char`\"{}pochet guillaume -\/ R\+D\+V paramédical -\/ Obésité sévère – diagnostique\char`\"{}, parcours\+\_\+id\+:\char`\"{}1\char`\"{}, patient\+\_\+id\+:\char`\"{}11\char`\"{}\} 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_planning_a37907a80875259e9962aacda1e9431cd}\label{class_planning_a37907a80875259e9962aacda1e9431cd}} 
+\index{Planning@{Planning}!get\+Activite\+A\+Planifier\+Recherche@{get\+Activite\+A\+Planifier\+Recherche}}
+\index{get\+Activite\+A\+Planifier\+Recherche@{get\+Activite\+A\+Planifier\+Recherche}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{get\+Activite\+A\+Planifier\+Recherche()}{getActiviteAPlanifierRecherche()}}
+{\footnotesize\ttfamily Planning\+::get\+Activite\+A\+Planifier\+Recherche (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}afficher la liste de toutes les activités à plannifier en recherchant un nom de patient. 
+
+Permet d\textquotesingle{}afficher la liste de toutes les activités à plannifieren recherchant un nom de patient pour une date données Retourne la liste des activités au format J\+S\+ON \+: \{activite\+\_\+id\+:\char`\"{}1\char`\"{}, activite\+\_\+precedente\+:\char`\"{}\+Début\char`\"{}, duree\+:\char`\"{}0\+:20\+:0\char`\"{}, necessite\+:\char`\"{}1 I\+D\+E obésité, 1 H\+D\+J obésité\char`\"{}, nom\+\_\+activite\+:\char`\"{}pochet guillaume -\/ R\+D\+V paramédical -\/ Obésité sévère – diagnostique\char`\"{}, parcours\+\_\+id\+:\char`\"{}1\char`\"{}, patient\+\_\+id\+:\char`\"{}11\char`\"{}\} 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_planning_a0e4778f75bae9880dac4dcef097e0196}\label{class_planning_a0e4778f75bae9880dac4dcef097e0196}} 
+\index{Planning@{Planning}!get\+Evenement@{get\+Evenement}}
+\index{get\+Evenement@{get\+Evenement}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{get\+Evenement()}{getEvenement()}}
+{\footnotesize\ttfamily Planning\+::get\+Evenement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet de récupérer la liste de tout les événement à ajouter au planning. 
+
+Permet de récupérer la liste de tout les événement à ajouter au planning Retourne la liste des événements au format J\+S\+ON \+: \{activite\+Id\+:\char`\"{}1\char`\"{}, activite\+\_\+precedente\+:\char`\"{}\+Début\char`\"{}, color\+:\char`\"{}\#\+F\+F1490\char`\"{}, end\+:\char`\"{}2017-\/03-\/28 10\+:20\+:00\char`\"{}, id\+:\char`\"{}325\char`\"{}, necessite\+:\char`\"{}1 I\+D\+E obésité, 1 H\+D\+J obésité\char`\"{}, parcours\+Id\+:\char`\"{}1\char`\"{}, patient\+Id\+:\char`\"{}1\char`\"{}, resource\+Id\+:\char`\"{}1\char`\"{}, start\+:\char`\"{}2017-\/03-\/28 10\+:00\+:00\char`\"{}, title\+:\char`\"{}\+Martin Simon -\/ R\+D\+V paramédical -\/ Obésité sévère – diagnostique\}\char`\"{} 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_planning_a6eb383b4098e8ba4e077e38b580ebc20}\label{class_planning_a6eb383b4098e8ba4e077e38b580ebc20}} 
+\index{Planning@{Planning}!get\+Ressources@{get\+Ressources}}
+\index{get\+Ressources@{get\+Ressources}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{get\+Ressources()}{getRessources()}}
+{\footnotesize\ttfamily Planning\+::get\+Ressources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet de récupérer la liste de toutes les ressource humaines ou matérielles. 
+
+Permet de récupérer la liste de toutes les ressource humaines ou matérielles Retourne la liste des ressources au format J\+S\+ON \+: \{id\+: \char`\"{}1\char`\"{}, title\+: \char`\"{}\+Soumaya Cheniour\char`\"{}, type\+\_\+ressource\+: \char`\"{}\+I\+D\+E obésité\char`\"{}\} 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_planning_a9d08178f98ae683a155391a6dbfbf8ed}\label{class_planning_a9d08178f98ae683a155391a6dbfbf8ed}} 
+\index{Planning@{Planning}!planifier@{planifier}}
+\index{planifier@{planifier}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{planifier()}{planifier()}}
+{\footnotesize\ttfamily Planning\+::planifier (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}afficher la vue de plannfication générale. 
+
+Permet d\textquotesingle{}afficher la vue de plannfication générale 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_planning_a419130e49b8ddc19ffa6f8febbcb722d}\label{class_planning_a419130e49b8ddc19ffa6f8febbcb722d}} 
+\index{Planning@{Planning}!restaurer@{restaurer}}
+\index{restaurer@{restaurer}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{restaurer()}{restaurer()}}
+{\footnotesize\ttfamily Planning\+::restaurer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet de restaurer (reprise de la dernière sauvegarde) le planning. 
+
+Permet de restaurer (reprise de la dernière sauvegarde) le planning 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_planning_aeb1146ae1c0a9e5f31214b9dbced1140}\label{class_planning_aeb1146ae1c0a9e5f31214b9dbced1140}} 
+\index{Planning@{Planning}!sauvegarder@{sauvegarder}}
+\index{sauvegarder@{sauvegarder}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{sauvegarder()}{sauvegarder()}}
+{\footnotesize\ttfamily Planning\+::sauvegarder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet de sauvegarder le planning. 
+
+Permet de sauvegarder le planning 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_planning_a98d895eb72d210bad07437f5b0a395b1}\label{class_planning_a98d895eb72d210bad07437f5b0a395b1}} 
+\index{Planning@{Planning}!update\+Event@{update\+Event}}
+\index{update\+Event@{update\+Event}!Planning@{Planning}}
+\subsubsection{\texorpdfstring{update\+Event()}{updateEvent()}}
+{\footnotesize\ttfamily Planning\+::update\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Permet de mettre à jour un événement. 
+
+Permet de mettre à jour un événement Récupére la liste des informations d\textquotesingle{}un événement et les met à jour en base de données 
+\begin{DoxyParams}{Paramètres}
+{\em Aucun} & \\
+\hline
+\end{DoxyParams}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+app/controllers/\hyperlink{_planning_8php}{Planning.\+php}\end{DoxyCompactItemize}
