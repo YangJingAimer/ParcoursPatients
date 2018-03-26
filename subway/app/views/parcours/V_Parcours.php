@@ -1,11 +1,11 @@
 <div class="container-fluid">
     <div class="jumbotron">
         <h3> Parcours-patient au sein de l'hôpital </h3>
-        <a href="ajout">Ajouter un parcours patients</a>
+        <a href="<?php echo base_url('Parcours/ajout/') ?>">Ajouter un parcours patients</a>
         <table name="formu"class="table table-responsive table-hover">
             <thead>         
             <th class="col-xs-3">NOM</th>
-            <th class="col-xs-1">Objectif</th>
+            <!--th class="col-xs-1">Objectif</th-->
             <th class="col-xs-1">Code</th>
             <th class="col-xs-1"></th>
             </tr>
@@ -16,7 +16,7 @@
                     ?>
                     <tr>
                         <td><?php echo $row["nom"] ?></td>
-                        <td><?php echo $row["objectif"] ?></td>
+                        <!--td><?php echo $row["objectif"] ?></td-->
                         <td><?php echo $row["code"] ?></td>
                         <td>
                             <div class="dropdown">
@@ -25,9 +25,9 @@
                                 </button>
 
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <li><a href="modif/<?php echo $row["id_parcours"] ?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Modifier</a></li>
+                                    <li><a href="<?php echo base_url('Parcours/modif/') . '/' . $row["id_parcours"] ?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Modifier</a></li>
                                     <li><a href="<?php echo base_url(); ?>Parcours/supprimer/<?php echo $row["id_parcours"] ?>"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Supprimer</a></li>
-                                    <li><a href="visualiser/<?php echo $row["id_parcours"] ?>"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Visualiser</a></li>
+                                    <li><a href="<?php echo base_url('Parcours/visualiser/') . '/' . $row["id_parcours"] ?>"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Visualiser</a></li>
                                 </ul>
                         </td>
                     </tr>

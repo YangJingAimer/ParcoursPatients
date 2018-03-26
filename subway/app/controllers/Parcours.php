@@ -49,7 +49,7 @@ class Parcours extends CI_Controller {
         $data['chemin'] = '/parcours/v_addParcours';
         $data['id'] = -1;
         $data['nom'] = "";
-        $data['objectif'] = 0;
+        //$data['objectif'] = 0;
         $data['code'] = "";
         $data['activites'] = array();
         $data['precedences'] = array();
@@ -92,12 +92,19 @@ class Parcours extends CI_Controller {
         $parcours = array();
         $parcours['nom'] = "";
         $parcours['code'] = "";
-        $parcours['objectif'] = "";
+        //$parcours['objectif'] = "";
         $parcours['id'] = "";
+        /*
         if (isset($_POST['nom']) && isset($_POST['code']) && isset($_POST['objectif']) && isset($_POST['id'])) {
             $parcours['nom'] = $_POST['nom'];
             $parcours['code'] = $_POST['code'];
             $parcours['objectif'] = $_POST['objectif'];
+            $parcours['id'] = $_POST['id'];
+        }*/
+        if (isset($_POST['nom']) && isset($_POST['code']) && isset($_POST['id'])) {
+            $parcours['nom'] = $_POST['nom'];
+            $parcours['code'] = $_POST['code'];
+            
             $parcours['id'] = $_POST['id'];
         }
         $parcours["precedences"] = array();
@@ -170,7 +177,7 @@ class Parcours extends CI_Controller {
         $data["listePrecedences"] = $precedences;
         $data["id"] = $id;
         $data["nom"] = $parcours["nom"];
-        $data["objectif"] = $parcours["objectif"];
+        //$data["objectif"] = $parcours["objectif"];
         $data["code"] = $parcours["code"];
         $data["activites"] = $parcours["activites"];
         $data["precedences"] = $parcours["precedences"];
@@ -190,7 +197,7 @@ class Parcours extends CI_Controller {
         $precedences = $this->M_Parcours->getDependencesActivitesToJson($id);
         $data["id"] = $id;
         $data["nom"] = $parcours["nom"];
-        $data["objectif"] = $parcours["objectif"];
+        //$data["objectif"] = $parcours["objectif"];
         $data["code"] = $parcours["code"];
         $data["activites"] = $parcours["activites"];
         $data["precedences"] = $parcours["precedences"];

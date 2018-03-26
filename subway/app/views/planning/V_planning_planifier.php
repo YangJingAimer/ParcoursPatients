@@ -175,7 +175,7 @@
             droppable: true, // this allows things to be dropped onto the calendar
             resources: {
                 type: "GET",
-                url: '<?php echo base_url("Planning/getRessources"); ?>',
+                url: '<?php echo base_url("Planning/getRessources"); ?>'
             },
             viewRender: function (event) {
                 rechercher();
@@ -201,7 +201,7 @@
             },
             eventReceive: function (event) {
                 var title = event.title;
-                var start = event.start.toString()
+                var start = event.start.toString();
                 var end = event.end.toString();
                 var ressourceId = event.resourceId;
                 var activiteId = event.activiteId;
@@ -226,7 +226,7 @@
             },
             eventDragStop: function (event) {
                 if (isElemOverDiv()) {
-                    if (event.id != "-1") {
+                    if (event.id !== "-1") {
                         $.ajax({
                             type: "POST",
                             data: {"idActivite": event.activiteId, "idPatient": event.patientId, "idParcours": event.parcoursId},

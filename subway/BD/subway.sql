@@ -1,15 +1,12 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.1.14
+-- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Mer 05 Avril 2017 à 14:35
--- Version du serveur :  5.7.14
--- Version de PHP :  5.6.25
+-- Host: 127.0.0.1
+-- Generation Time: 2018-03-08 10:12:53
+-- 服务器版本： 5.6.17
+-- PHP Version: 5.5.12
 
-
-CREATE DATABASE subway;
-USE subway;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -17,27 +14,30 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `subway`
+-- Database: `subway`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `activite`
+-- 表的结构 `activite`
 --
+CREATE DATABASE IF NOT EXISTS `subway` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `subway`;
 
-CREATE TABLE `activite` (
+CREATE TABLE IF NOT EXISTS `activite` (
   `ID_ACTIVITE` bigint(11) NOT NULL,
   `TXT_NOM` varchar(255) DEFAULT NULL,
   `INT_DUREE` bigint(4) DEFAULT NULL,
-  `TXT_COMMENTAIRE` varchar(255) DEFAULT NULL
+  `TXT_COMMENTAIRE` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID_ACTIVITE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `activite`
+-- 转存表中的数据 `activite`
 --
 
 INSERT INTO `activite` (`ID_ACTIVITE`, `TXT_NOM`, `INT_DUREE`, `TXT_COMMENTAIRE`) VALUES
@@ -78,23 +78,25 @@ INSERT INTO `activite` (`ID_ACTIVITE`, `TXT_NOM`, `INT_DUREE`, `TXT_COMMENTAIRE`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `champ`
+-- 表的结构 `champ`
 --
 
-CREATE TABLE `champ` (
+CREATE TABLE IF NOT EXISTS `champ` (
   `ID_CHAMP` bigint(11) NOT NULL,
   `ID_TYPECHAMP` bigint(11) NOT NULL,
-  `TXT_NOM` varchar(255) DEFAULT NULL
+  `TXT_NOM` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID_CHAMP`),
+  KEY `I_FK_CHAMP_TYPECHAMP` (`ID_TYPECHAMP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `champ`
+-- 转存表中的数据 `champ`
 --
 
 INSERT INTO `champ` (`ID_CHAMP`, `ID_TYPECHAMP`, `TXT_NOM`) VALUES
 (1, 1, 'Nom'),
 (2, 3, 'Observation'),
-(3, 2, 'Date d\'observation'),
+(3, 2, 'Date d''observation'),
 (4, 1, 'Test'),
 (5, 1, 'Tes'),
 (6, 1, 'T'),
@@ -104,19 +106,23 @@ INSERT INTO `champ` (`ID_CHAMP`, `ID_TYPECHAMP`, `TXT_NOM`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `composer`
+-- 表的结构 `composer`
 --
 
-CREATE TABLE `composer` (
+CREATE TABLE IF NOT EXISTS `composer` (
   `ID_PARCOURS` bigint(11) NOT NULL,
   `ID_ACTIVITE` bigint(11) NOT NULL,
   `ID_ACTIVITE_PRECEDENTE` bigint(11) NOT NULL,
   `INT_DELAIMIN` bigint(4) DEFAULT NULL,
-  `INT_DELAIMAX` bigint(4) DEFAULT NULL
+  `INT_DELAIMAX` bigint(4) DEFAULT NULL,
+  PRIMARY KEY (`ID_PARCOURS`,`ID_ACTIVITE`,`ID_ACTIVITE_PRECEDENTE`),
+  KEY `I_FK_COMPOSER_PARCOURS` (`ID_PARCOURS`),
+  KEY `I_FK_COMPOSER_ACTIVITE` (`ID_ACTIVITE`),
+  KEY `I_FK_COMPOSER_ACTIVITE1` (`ID_ACTIVITE_PRECEDENTE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `composer`
+-- 转存表中的数据 `composer`
 --
 
 INSERT INTO `composer` (`ID_PARCOURS`, `ID_ACTIVITE`, `ID_ACTIVITE_PRECEDENTE`, `INT_DELAIMIN`, `INT_DELAIMAX`) VALUES
@@ -139,18 +145,20 @@ INSERT INTO `composer` (`ID_PARCOURS`, `ID_ACTIVITE`, `ID_ACTIVITE_PRECEDENTE`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `compte`
+-- 表的结构 `compte`
 --
 
-CREATE TABLE `compte` (
+CREATE TABLE IF NOT EXISTS `compte` (
   `ID_COMPTE` bigint(11) NOT NULL,
   `TXT_LOGIN` varchar(255) DEFAULT NULL,
   `TXT_MOTDEPASSE` varchar(255) DEFAULT NULL,
-  `ID_TYPECOMPTE` bigint(11) NOT NULL
+  `ID_TYPECOMPTE` bigint(11) NOT NULL,
+  PRIMARY KEY (`ID_COMPTE`),
+  KEY `compte_ibfk_1` (`ID_TYPECOMPTE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `compte`
+-- 转存表中的数据 `compte`
 --
 
 INSERT INTO `compte` (`ID_COMPTE`, `TXT_LOGIN`, `TXT_MOTDEPASSE`, `ID_TYPECOMPTE`) VALUES
@@ -189,23 +197,29 @@ INSERT INTO `compte` (`ID_COMPTE`, `TXT_LOGIN`, `TXT_MOTDEPASSE`, `ID_TYPECOMPTE
 (33, 'pochet', '$21N5YZFMHzG2', 1),
 (34, 'pochet', '$21N5YZFMHzG2', 1),
 (35, 'pochet', '$21N5YZFMHzG2', 1),
-(36, 'pochet', '$21N5YZFMHzG2', 1);
+(36, 'pochet', '$21N5YZFMHzG2', 1),
+(37, 'admin', 'admin', 2),
+(38, 'YANG.Jing', '$2h5ADN5BooAA', 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `constituerdossier`
+-- 表的结构 `constituerdossier`
 --
 
-CREATE TABLE `constituerdossier` (
+CREATE TABLE IF NOT EXISTS `constituerdossier` (
   `ID_CHAMP` bigint(11) NOT NULL,
   `ID_ONGLET` bigint(11) NOT NULL,
   `ID_DOSSIERPARCOURS` bigint(11) NOT NULL,
-  `TXT_VALEUR` varchar(255) DEFAULT NULL
+  `TXT_VALEUR` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID_CHAMP`,`ID_DOSSIERPARCOURS`,`ID_ONGLET`),
+  KEY `I_FK_CONSTITUERDOSSIER_CHAMP` (`ID_CHAMP`),
+  KEY `I_FK_CONSTITUERDOSSIER_DOSSIERPARCOURS` (`ID_DOSSIERPARCOURS`),
+  KEY `I_FK_CONSTITUERDOSSIER_ONGLET` (`ID_ONGLET`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `constituerdossier`
+-- 转存表中的数据 `constituerdossier`
 --
 
 INSERT INTO `constituerdossier` (`ID_CHAMP`, `ID_ONGLET`, `ID_DOSSIERPARCOURS`, `TXT_VALEUR`) VALUES
@@ -241,28 +255,35 @@ INSERT INTO `constituerdossier` (`ID_CHAMP`, `ID_ONGLET`, `ID_DOSSIERPARCOURS`, 
 (7, 1, 1, '');
 
 --
--- Déclencheurs `constituerdossier`
+-- 触发器 `constituerdossier`
 --
-DELIMITER $$
-CREATE TRIGGER `apres_modification_dossier` AFTER UPDATE ON `constituerdossier` FOR EACH ROW UPDATE dossierparcours set DATE_DERNIERE_MODIFICATION = NOW() where id_dossierparcours=NEW.id_dossierparcours
-$$
+DROP TRIGGER IF EXISTS `apres_modification_dossier`;
+DELIMITER //
+CREATE TRIGGER `apres_modification_dossier` AFTER UPDATE ON `constituerdossier`
+ FOR EACH ROW UPDATE dossierparcours set DATE_DERNIERE_MODIFICATION = NOW() where id_dossierparcours=NEW.id_dossierparcours
+//
 DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dossiergenerique`
+-- 表的结构 `dossiergenerique`
 --
 
-CREATE TABLE `dossiergenerique` (
+CREATE TABLE IF NOT EXISTS `dossiergenerique` (
   `ID_CHAMP` bigint(11) NOT NULL,
   `ID_ONGLET` bigint(11) NOT NULL,
   `ID_PARCOURS` bigint(11) NOT NULL,
-  `ID_ACTIVITE` bigint(11) NOT NULL
+  `ID_ACTIVITE` bigint(11) NOT NULL,
+  PRIMARY KEY (`ID_CHAMP`,`ID_ONGLET`,`ID_PARCOURS`,`ID_ACTIVITE`),
+  KEY `I_FK_DOSSIERGENERIQUE_CHAMP` (`ID_CHAMP`),
+  KEY `I_FK_DOSSIERGENERIQUE_ONGLET` (`ID_ONGLET`),
+  KEY `I_FK_DOSSIERGENERIQUE_PARCOURS` (`ID_PARCOURS`),
+  KEY `I_FK_DOSSIERGENERIQUE_ACTIVITE` (`ID_ACTIVITE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `dossiergenerique`
+-- 转存表中的数据 `dossiergenerique`
 --
 
 INSERT INTO `dossiergenerique` (`ID_CHAMP`, `ID_ONGLET`, `ID_PARCOURS`, `ID_ACTIVITE`) VALUES
@@ -280,19 +301,22 @@ INSERT INTO `dossiergenerique` (`ID_CHAMP`, `ID_ONGLET`, `ID_PARCOURS`, `ID_ACTI
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dossierparcours`
+-- 表的结构 `dossierparcours`
 --
 
-CREATE TABLE `dossierparcours` (
+CREATE TABLE IF NOT EXISTS `dossierparcours` (
   `ID_DOSSIERPARCOURS` bigint(11) NOT NULL,
   `ID_PATIENT` bigint(11) NOT NULL,
   `ID_PARCOURS` bigint(11) NOT NULL,
   `DATE_CREATION_DOSSIER` date NOT NULL,
-  `DATE_DERNIERE_MODIFICATION` date DEFAULT NULL
+  `DATE_DERNIERE_MODIFICATION` date DEFAULT NULL,
+  PRIMARY KEY (`ID_DOSSIERPARCOURS`),
+  KEY `I_FK_DOSSIERPARCOURS_PATIENT` (`ID_PATIENT`),
+  KEY `I_FK_DOSSIERPARCOURS_PARCOURS` (`ID_PARCOURS`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `dossierparcours`
+-- 转存表中的数据 `dossierparcours`
 --
 
 INSERT INTO `dossierparcours` (`ID_DOSSIERPARCOURS`, `ID_PATIENT`, `ID_PARCOURS`, `DATE_CREATION_DOSSIER`, `DATE_DERNIERE_MODIFICATION`) VALUES
@@ -304,37 +328,41 @@ INSERT INTO `dossierparcours` (`ID_DOSSIERPARCOURS`, `ID_PATIENT`, `ID_PARCOURS`
 (6, 4, 1, '2017-04-06', '2017-04-06');
 
 --
--- Déclencheurs `dossierparcours`
+-- 触发器 `dossierparcours`
 --
-DELIMITER $$
-CREATE TRIGGER `apres_creation_dossier_parcours` AFTER INSERT ON `dossierparcours` FOR EACH ROW INSERT INTO constituerdossier (ID_CHAMP, ID_ONGLET, ID_DOSSIERPARCOURS, TXT_VALEUR)
+DROP TRIGGER IF EXISTS `apres_creation_dossier_parcours`;
+DELIMITER //
+CREATE TRIGGER `apres_creation_dossier_parcours` AFTER INSERT ON `dossierparcours`
+ FOR EACH ROW INSERT INTO constituerdossier (ID_CHAMP, ID_ONGLET, ID_DOSSIERPARCOURS, TXT_VALEUR)
 SELECT id_champ,id_onglet, NEW.id_dossierparcours, NULL
 FROM dossiergenerique
 WHERE id_parcours = NEW.id_parcours
-$$
+//
 DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `etreindisponible`
+-- 表的结构 `etreindisponible`
 --
 
-CREATE TABLE `etreindisponible` (
+CREATE TABLE IF NOT EXISTS `etreindisponible` (
   `ID_ETREINDISPONIBLE` bigint(11) NOT NULL,
   `ID_RESSOURCE` bigint(11) NOT NULL,
   `DATE_DEBUT` datetime NOT NULL,
-  `DATE_FIN` datetime DEFAULT NULL
+  `DATE_FIN` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID_ETREINDISPONIBLE`),
+  KEY `I_FK_ETREINDISPONIBLE_RESSOURCE` (`ID_RESSOURCE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `evenement`
+-- 表的结构 `evenement`
 --
 
-CREATE TABLE `evenement` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `evenement` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `end` datetime NOT NULL,
   `start` datetime NOT NULL,
@@ -342,11 +370,16 @@ CREATE TABLE `evenement` (
   `patientId` bigint(11) NOT NULL,
   `parcoursId` bigint(11) NOT NULL,
   `activiteId` bigint(11) NOT NULL,
-  `color` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `color` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `ressourceId` (`ressourceId`),
+  KEY `patientId` (`patientId`),
+  KEY `parcoursId` (`parcoursId`),
+  KEY `activiteId` (`activiteId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=452 ;
 
 --
--- Contenu de la table `evenement`
+-- 转存表中的数据 `evenement`
 --
 
 INSERT INTO `evenement` (`id`, `title`, `end`, `start`, `ressourceId`, `patientId`, `parcoursId`, `activiteId`, `color`) VALUES
@@ -462,17 +495,18 @@ INSERT INTO `evenement` (`id`, `title`, `end`, `start`, `ressourceId`, `patientI
 -- --------------------------------------------------------
 
 --
--- Structure de la table `jour`
+-- 表的结构 `jour`
 --
 
-CREATE TABLE `jour` (
+CREATE TABLE IF NOT EXISTS `jour` (
   `ID_JOUR` bigint(20) NOT NULL,
   `TXT_JOUR` varchar(20) NOT NULL,
-  `INT_JOUR_SQL` bigint(20) DEFAULT NULL
+  `INT_JOUR_SQL` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID_JOUR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `jour`
+-- 转存表中的数据 `jour`
 --
 
 INSERT INTO `jour` (`ID_JOUR`, `TXT_JOUR`, `INT_JOUR_SQL`) VALUES
@@ -487,17 +521,20 @@ INSERT INTO `jour` (`ID_JOUR`, `TXT_JOUR`, `INT_JOUR_SQL`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `necessiter`
+-- 表的结构 `necessiter`
 --
 
-CREATE TABLE `necessiter` (
+CREATE TABLE IF NOT EXISTS `necessiter` (
   `ID_ACTIVITE` bigint(11) NOT NULL,
   `ID_TYPERESSOURCE` bigint(11) NOT NULL,
-  `QUANTITE` bigint(4) DEFAULT NULL
+  `QUANTITE` bigint(4) DEFAULT NULL,
+  PRIMARY KEY (`ID_ACTIVITE`,`ID_TYPERESSOURCE`),
+  KEY `I_FK_NECESSITER_ACTIVITE` (`ID_ACTIVITE`),
+  KEY `I_FK_NECESSITER_TYPERESSOURCE` (`ID_TYPERESSOURCE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `necessiter`
+-- 转存表中的数据 `necessiter`
 --
 
 INSERT INTO `necessiter` (`ID_ACTIVITE`, `ID_TYPERESSOURCE`, `QUANTITE`) VALUES
@@ -522,16 +559,17 @@ INSERT INTO `necessiter` (`ID_ACTIVITE`, `ID_TYPERESSOURCE`, `QUANTITE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `onglet`
+-- 表的结构 `onglet`
 --
 
-CREATE TABLE `onglet` (
+CREATE TABLE IF NOT EXISTS `onglet` (
   `ID_ONGLET` bigint(11) NOT NULL,
-  `TXT_NOM` varchar(255) DEFAULT NULL
+  `TXT_NOM` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID_ONGLET`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `onglet`
+-- 转存表中的数据 `onglet`
 --
 
 INSERT INTO `onglet` (`ID_ONGLET`, `TXT_NOM`) VALUES
@@ -541,16 +579,33 @@ INSERT INTO `onglet` (`ID_ONGLET`, `TXT_NOM`) VALUES
 (4, 'Fibroscan'),
 (5, 'Entretien hépato'),
 (6, 'Traitement Rémicade'),
-(7, 'Synthèse');
+(7, 'Synthèse'),
+(8, 'ECG'),
+(9, 'Calorimétrie'),
+(10, 'Entretien psy'),
+(11, 'Entretien infirmier'),
+(12, 'Entretien diet'),
+(13, 'TOGD'),
+(14, 'Bilan anthropométrique'),
+(15, 'Scanner abdo'),
+(16, 'Ponction Ascite'),
+(17, 'Soins ponction'),
+(18, 'Injection Ferinject'),
+(19, 'Injection'),
+(20, 'Scintigraphie myocardique'),
+(21, 'Scanner des corronaires'),
+(22, 'Echodoppler TSA et MI'),
+(23, 'Rétinographie'),
+(24, 'Pose Holter');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ordonnancer`
+-- 表的结构 `ordonnancer`
 --
 
-CREATE TABLE `ordonnancer` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ordonnancer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `end` datetime NOT NULL,
   `start` datetime NOT NULL,
@@ -558,11 +613,16 @@ CREATE TABLE `ordonnancer` (
   `patientId` bigint(11) NOT NULL,
   `parcoursId` bigint(11) NOT NULL,
   `activiteId` bigint(11) NOT NULL,
-  `color` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `color` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `ressourceId` (`ressourceId`),
+  KEY `patientId` (`patientId`),
+  KEY `parcoursId` (`parcoursId`),
+  KEY `activiteId` (`activiteId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=452 ;
 
 --
--- Contenu de la table `ordonnancer`
+-- 转存表中的数据 `ordonnancer`
 --
 
 INSERT INTO `ordonnancer` (`id`, `title`, `end`, `start`, `ressourceId`, `patientId`, `parcoursId`, `activiteId`, `color`) VALUES
@@ -678,18 +738,19 @@ INSERT INTO `ordonnancer` (`id`, `title`, `end`, `start`, `ressourceId`, `patien
 -- --------------------------------------------------------
 
 --
--- Structure de la table `parcours`
+-- 表的结构 `parcours`
 --
 
-CREATE TABLE `parcours` (
+CREATE TABLE IF NOT EXISTS `parcours` (
   `ID_PARCOURS` bigint(11) NOT NULL,
   `TXT_NOM` varchar(255) DEFAULT NULL,
   `INT_OBJECTIF` int(11) DEFAULT NULL,
-  `TXT_CODE` varchar(255) DEFAULT NULL
+  `TXT_CODE` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID_PARCOURS`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `parcours`
+-- 转存表中的数据 `parcours`
 --
 
 INSERT INTO `parcours` (`ID_PARCOURS`, `TXT_NOM`, `INT_OBJECTIF`, `TXT_CODE`) VALUES
@@ -702,7 +763,7 @@ INSERT INTO `parcours` (`ID_PARCOURS`, `TXT_NOM`, `INT_OBJECTIF`, `TXT_CODE`) VA
 (7, 'Ponction ascite', NULL, NULL),
 (8, 'Injection de fer', NULL, NULL),
 (9, 'Bilan des complications du diabète', NULL, NULL),
-(10, 'Bilan diagnostic étiologique et/ou décompensation d\'un diabète avec initiation de la prise en charge', NULL, NULL),
+(10, 'Bilan diagnostic étiologique et/ou décompensation d''un diabète avec initiation de la prise en charge', NULL, NULL),
 (11, 'Traitement du pied diabétique', NULL, NULL),
 (12, 'ETP diabétique', NULL, NULL),
 (13, 'HDJ nuit : Diagnostic nuit', NULL, NULL),
@@ -721,10 +782,10 @@ INSERT INTO `parcours` (`ID_PARCOURS`, `TXT_NOM`, `INT_OBJECTIF`, `TXT_CODE`) VA
 -- --------------------------------------------------------
 
 --
--- Structure de la table `patient`
+-- 表的结构 `patient`
 --
 
-CREATE TABLE `patient` (
+CREATE TABLE IF NOT EXISTS `patient` (
   `ID_PATIENT` bigint(11) NOT NULL,
   `ID_COMPTE` bigint(11) NOT NULL,
   `TXT_NOM` varchar(255) DEFAULT NULL,
@@ -741,11 +802,14 @@ CREATE TABLE `patient` (
   `DATE_NAISSANCE` date DEFAULT NULL,
   `ID_PARCOURS_SUP` bigint(11) DEFAULT NULL,
   `DATE_DISPONIBLE_DEBUT` datetime DEFAULT NULL,
-  `DATE_DISPONIBLE_FIN` datetime DEFAULT NULL
+  `DATE_DISPONIBLE_FIN` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID_PATIENT`),
+  KEY `I_FK_PATIENT_COMPTE` (`ID_COMPTE`),
+  KEY `I_FK_PATIENT_PARCOURS` (`ID_PARCOURS_SUP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `patient`
+-- 转存表中的数据 `patient`
 --
 
 INSERT INTO `patient` (`ID_PATIENT`, `ID_COMPTE`, `TXT_NOM`, `TXT_PRENOM`, `TXT_ADRESSENUM`, `TXT_ADRESSERUE`, `TXT_ADRESSECODEPOSTAL`, `TXT_ADRESSEVILLE`, `TXT_ADRESSEPAYS`, `TXT_MAIL`, `TXT_TELEPHONEFIXE`, `TXT_TELEPHONEPORTABLE`, `TXT_NUMSECU`, `DATE_NAISSANCE`, `ID_PARCOURS_SUP`, `DATE_DISPONIBLE_DEBUT`, `DATE_DISPONIBLE_FIN`) VALUES
@@ -763,19 +827,22 @@ INSERT INTO `patient` (`ID_PATIENT`, `ID_COMPTE`, `TXT_NOM`, `TXT_PRENOM`, `TXT_
 -- --------------------------------------------------------
 
 --
--- Structure de la table `personnel`
+-- 表的结构 `personnel`
 --
 
-CREATE TABLE `personnel` (
+CREATE TABLE IF NOT EXISTS `personnel` (
   `ID_PERSONNEL` bigint(11) NOT NULL,
   `ID_RESSOURCE` bigint(11) NOT NULL,
   `ID_COMPTE` bigint(11) NOT NULL,
   `TXT_NOM` char(255) DEFAULT NULL,
-  `TXT_PRENOM` char(255) DEFAULT NULL
+  `TXT_PRENOM` char(255) DEFAULT NULL,
+  PRIMARY KEY (`ID_PERSONNEL`),
+  KEY `I_FK_PERSONNEL_RESSOURCE` (`ID_RESSOURCE`),
+  KEY `I_FK_PERSONNEL_COMPTE` (`ID_COMPTE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `personnel`
+-- 转存表中的数据 `personnel`
 --
 
 INSERT INTO `personnel` (`ID_PERSONNEL`, `ID_RESSOURCE`, `ID_COMPTE`, `TXT_NOM`, `TXT_PRENOM`) VALUES
@@ -799,21 +866,23 @@ INSERT INTO `personnel` (`ID_PERSONNEL`, `ID_RESSOURCE`, `ID_COMPTE`, `TXT_NOM`,
 -- --------------------------------------------------------
 
 --
--- Structure de la table `planparcours`
+-- 表的结构 `planparcours`
 --
 
-CREATE TABLE `planparcours` (
+CREATE TABLE IF NOT EXISTS `planparcours` (
   `ID_PARCOURS` bigint(20) NOT NULL,
   `ID_JOUR` bigint(20) NOT NULL,
-  `INT_NB_PATIENT` bigint(20) DEFAULT NULL
+  `INT_NB_PATIENT` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID_PARCOURS`,`ID_JOUR`),
+  KEY `planparcours_ibfk_2` (`ID_JOUR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='le nombre de patient qui exécutent ce parcours à ce jour';
 
 --
--- Contenu de la table `planparcours`
+-- 转存表中的数据 `planparcours`
 --
 
 INSERT INTO `planparcours` (`ID_PARCOURS`, `ID_JOUR`, `INT_NB_PATIENT`) VALUES
-(1, 1, 1),
+(1, 1, 3),
 (1, 2, 4),
 (1, 3, 4),
 (1, 4, 4),
@@ -822,21 +891,78 @@ INSERT INTO `planparcours` (`ID_PARCOURS`, `ID_JOUR`, `INT_NB_PATIENT`) VALUES
 (2, 2, 2),
 (2, 3, 4),
 (2, 4, 1),
-(2, 5, 3);
+(2, 5, 3),
+(3, 1, 5),
+(3, 2, 5),
+(3, 3, 5),
+(3, 4, 5),
+(3, 5, 5),
+(4, 1, 5),
+(4, 2, 5),
+(4, 3, 5),
+(4, 4, 5),
+(4, 5, 5),
+(5, 1, 5),
+(5, 2, 5),
+(5, 3, 5),
+(5, 4, 5),
+(5, 5, 5),
+(6, 1, 5),
+(6, 2, 5),
+(6, 3, 5),
+(6, 4, 5),
+(6, 5, 5),
+(7, 1, 5),
+(7, 2, 5),
+(7, 3, 5),
+(7, 4, 5),
+(7, 5, 5),
+(8, 1, 5),
+(8, 2, 5),
+(8, 3, 5),
+(8, 4, 5),
+(8, 5, 5),
+(9, 1, 5),
+(9, 2, 5),
+(9, 3, 5),
+(9, 4, 5),
+(9, 5, 5),
+(10, 1, 5),
+(10, 2, 5),
+(10, 3, 5),
+(10, 4, 5),
+(10, 5, 5),
+(11, 1, 5),
+(11, 2, 5),
+(11, 3, 5),
+(11, 4, 5),
+(11, 5, 5),
+(12, 1, 5),
+(12, 2, 5),
+(12, 3, 5),
+(12, 4, 5),
+(12, 5, 5),
+(13, 1, 7),
+(13, 2, 5),
+(13, 3, 5),
+(13, 4, 5),
+(13, 5, 5);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ressource`
+-- 表的结构 `ressource`
 --
 
-CREATE TABLE `ressource` (
+CREATE TABLE IF NOT EXISTS `ressource` (
   `ID_RESSOURCE` bigint(11) NOT NULL,
-  `ID_TYPERESSOURCE` bigint(11) NOT NULL
+  `ID_TYPERESSOURCE` bigint(11) NOT NULL,
+  PRIMARY KEY (`ID_RESSOURCE`),
+  KEY `I_FK_RESSOURCE_TYPERESSOURCE` (`ID_TYPERESSOURCE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `ressource`
+-- 转存表中的数据 `ressource`
 --
 
 INSERT INTO `ressource` (`ID_RESSOURCE`, `ID_TYPERESSOURCE`) VALUES
@@ -882,17 +1008,19 @@ INSERT INTO `ressource` (`ID_RESSOURCE`, `ID_TYPERESSOURCE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `salle`
+-- 表的结构 `salle`
 --
 
-CREATE TABLE `salle` (
+CREATE TABLE IF NOT EXISTS `salle` (
   `ID_SALLE` bigint(11) NOT NULL,
   `ID_RESSOURCE` bigint(11) NOT NULL,
-  `TXT_NOM` varchar(255) DEFAULT NULL
+  `TXT_NOM` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID_SALLE`),
+  KEY `I_FK_SALLE_RESSOURCE` (`ID_RESSOURCE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `salle`
+-- 转存表中的数据 `salle`
 --
 
 INSERT INTO `salle` (`ID_SALLE`, `ID_RESSOURCE`, `TXT_NOM`) VALUES
@@ -916,17 +1044,18 @@ INSERT INTO `salle` (`ID_SALLE`, `ID_RESSOURCE`, `TXT_NOM`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `typechamp`
+-- 表的结构 `typechamp`
 --
 
-CREATE TABLE `typechamp` (
+CREATE TABLE IF NOT EXISTS `typechamp` (
   `ID_TYPECHAMP` bigint(11) NOT NULL,
   `TXT_LIBELLE` varchar(255) DEFAULT NULL,
-  `TXT_VALEUR` varchar(512) DEFAULT NULL
+  `TXT_VALEUR` varchar(512) DEFAULT NULL,
+  PRIMARY KEY (`ID_TYPECHAMP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `typechamp`
+-- 转存表中的数据 `typechamp`
 --
 
 INSERT INTO `typechamp` (`ID_TYPECHAMP`, `TXT_LIBELLE`, `TXT_VALEUR`) VALUES
@@ -938,17 +1067,18 @@ INSERT INTO `typechamp` (`ID_TYPECHAMP`, `TXT_LIBELLE`, `TXT_VALEUR`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `typecompte`
+-- 表的结构 `typecompte`
 --
 
-CREATE TABLE `typecompte` (
+CREATE TABLE IF NOT EXISTS `typecompte` (
   `ID_TYPECOMPTE` bigint(11) NOT NULL,
   `TXT_NOM` varchar(16) NOT NULL,
-  `INT_NIVEAU` int(11) NOT NULL
+  `INT_NIVEAU` int(11) NOT NULL,
+  PRIMARY KEY (`ID_TYPECOMPTE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `typecompte`
+-- 转存表中的数据 `typecompte`
 --
 
 INSERT INTO `typecompte` (`ID_TYPECOMPTE`, `TXT_NOM`, `INT_NIVEAU`) VALUES
@@ -960,16 +1090,17 @@ INSERT INTO `typecompte` (`ID_TYPECOMPTE`, `TXT_NOM`, `INT_NIVEAU`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `typeressource`
+-- 表的结构 `typeressource`
 --
 
-CREATE TABLE `typeressource` (
+CREATE TABLE IF NOT EXISTS `typeressource` (
   `ID_TYPERESSOURCE` bigint(11) NOT NULL,
-  `TXT_NOM` varchar(255) DEFAULT NULL
+  `TXT_NOM` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID_TYPERESSOURCE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `typeressource`
+-- 转存表中的数据 `typeressource`
 --
 
 INSERT INTO `typeressource` (`ID_TYPERESSOURCE`, `TXT_NOM`) VALUES
@@ -1015,199 +1146,17 @@ INSERT INTO `typeressource` (`ID_TYPERESSOURCE`, `TXT_NOM`) VALUES
 (54, 'f');
 
 --
--- Index pour les tables exportées
+-- 限制导出的表
 --
 
 --
--- Index pour la table `activite`
---
-ALTER TABLE `activite`
-  ADD PRIMARY KEY (`ID_ACTIVITE`);
-
---
--- Index pour la table `champ`
+-- 限制表 `champ`
 --
 ALTER TABLE `champ`
-  ADD PRIMARY KEY (`ID_CHAMP`),
-  ADD KEY `I_FK_CHAMP_TYPECHAMP` (`ID_TYPECHAMP`);
+  ADD CONSTRAINT `champ_ibfk_1` FOREIGN KEY (`ID_TYPECHAMP`) REFERENCES `typechamp` (`ID_TYPECHAMP`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Index pour la table `composer`
---
-ALTER TABLE `composer`
-  ADD PRIMARY KEY (`ID_PARCOURS`,`ID_ACTIVITE`,`ID_ACTIVITE_PRECEDENTE`),
-  ADD KEY `I_FK_COMPOSER_PARCOURS` (`ID_PARCOURS`),
-  ADD KEY `I_FK_COMPOSER_ACTIVITE` (`ID_ACTIVITE`),
-  ADD KEY `I_FK_COMPOSER_ACTIVITE1` (`ID_ACTIVITE_PRECEDENTE`);
-
---
--- Index pour la table `compte`
---
-ALTER TABLE `compte`
-  ADD PRIMARY KEY (`ID_COMPTE`),
-  ADD KEY `compte_ibfk_1` (`ID_TYPECOMPTE`);
-
---
--- Index pour la table `constituerdossier`
---
-ALTER TABLE `constituerdossier`
-  ADD PRIMARY KEY (`ID_CHAMP`,`ID_DOSSIERPARCOURS`,`ID_ONGLET`),
-  ADD KEY `I_FK_CONSTITUERDOSSIER_CHAMP` (`ID_CHAMP`),
-  ADD KEY `I_FK_CONSTITUERDOSSIER_DOSSIERPARCOURS` (`ID_DOSSIERPARCOURS`),
-  ADD KEY `I_FK_CONSTITUERDOSSIER_ONGLET` (`ID_ONGLET`);
-
---
--- Index pour la table `dossiergenerique`
---
-ALTER TABLE `dossiergenerique`
-  ADD PRIMARY KEY (`ID_CHAMP`,`ID_ONGLET`,`ID_PARCOURS`,`ID_ACTIVITE`),
-  ADD KEY `I_FK_DOSSIERGENERIQUE_CHAMP` (`ID_CHAMP`),
-  ADD KEY `I_FK_DOSSIERGENERIQUE_ONGLET` (`ID_ONGLET`),
-  ADD KEY `I_FK_DOSSIERGENERIQUE_PARCOURS` (`ID_PARCOURS`),
-  ADD KEY `I_FK_DOSSIERGENERIQUE_ACTIVITE` (`ID_ACTIVITE`);
-
---
--- Index pour la table `dossierparcours`
---
-ALTER TABLE `dossierparcours`
-  ADD PRIMARY KEY (`ID_DOSSIERPARCOURS`),
-  ADD KEY `I_FK_DOSSIERPARCOURS_PATIENT` (`ID_PATIENT`),
-  ADD KEY `I_FK_DOSSIERPARCOURS_PARCOURS` (`ID_PARCOURS`);
-
---
--- Index pour la table `etreindisponible`
---
-ALTER TABLE `etreindisponible`
-  ADD PRIMARY KEY (`ID_ETREINDISPONIBLE`),
-  ADD KEY `I_FK_ETREINDISPONIBLE_RESSOURCE` (`ID_RESSOURCE`);
-
---
--- Index pour la table `evenement`
---
-ALTER TABLE `evenement`
-  ADD PRIMARY KEY (`id`) USING BTREE,
-  ADD KEY `ressourceId` (`ressourceId`),
-  ADD KEY `patientId` (`patientId`),
-  ADD KEY `parcoursId` (`parcoursId`),
-  ADD KEY `activiteId` (`activiteId`);
-
---
--- Index pour la table `jour`
---
-ALTER TABLE `jour`
-  ADD PRIMARY KEY (`ID_JOUR`);
-
---
--- Index pour la table `necessiter`
---
-ALTER TABLE `necessiter`
-  ADD PRIMARY KEY (`ID_ACTIVITE`,`ID_TYPERESSOURCE`),
-  ADD KEY `I_FK_NECESSITER_ACTIVITE` (`ID_ACTIVITE`),
-  ADD KEY `I_FK_NECESSITER_TYPERESSOURCE` (`ID_TYPERESSOURCE`);
-
---
--- Index pour la table `onglet`
---
-ALTER TABLE `onglet`
-  ADD PRIMARY KEY (`ID_ONGLET`);
-
---
--- Index pour la table `ordonnancer`
---
-ALTER TABLE `ordonnancer`
-  ADD PRIMARY KEY (`id`) USING BTREE,
-  ADD KEY `ressourceId` (`ressourceId`),
-  ADD KEY `patientId` (`patientId`),
-  ADD KEY `parcoursId` (`parcoursId`),
-  ADD KEY `activiteId` (`activiteId`);
-
---
--- Index pour la table `parcours`
---
-ALTER TABLE `parcours`
-  ADD PRIMARY KEY (`ID_PARCOURS`);
-
---
--- Index pour la table `patient`
---
-ALTER TABLE `patient`
-  ADD PRIMARY KEY (`ID_PATIENT`),
-  ADD KEY `I_FK_PATIENT_COMPTE` (`ID_COMPTE`),
-  ADD KEY `I_FK_PATIENT_PARCOURS` (`ID_PARCOURS_SUP`);
-
---
--- Index pour la table `personnel`
---
-ALTER TABLE `personnel`
-  ADD PRIMARY KEY (`ID_PERSONNEL`),
-  ADD KEY `I_FK_PERSONNEL_RESSOURCE` (`ID_RESSOURCE`),
-  ADD KEY `I_FK_PERSONNEL_COMPTE` (`ID_COMPTE`);
-
---
--- Index pour la table `planparcours`
---
-ALTER TABLE `planparcours`
-  ADD PRIMARY KEY (`ID_PARCOURS`,`ID_JOUR`),
-  ADD KEY `planparcours_ibfk_2` (`ID_JOUR`);
-
---
--- Index pour la table `ressource`
---
-ALTER TABLE `ressource`
-  ADD PRIMARY KEY (`ID_RESSOURCE`),
-  ADD KEY `I_FK_RESSOURCE_TYPERESSOURCE` (`ID_TYPERESSOURCE`);
-
---
--- Index pour la table `salle`
---
-ALTER TABLE `salle`
-  ADD PRIMARY KEY (`ID_SALLE`),
-  ADD KEY `I_FK_SALLE_RESSOURCE` (`ID_RESSOURCE`);
-
---
--- Index pour la table `typechamp`
---
-ALTER TABLE `typechamp`
-  ADD PRIMARY KEY (`ID_TYPECHAMP`);
-
---
--- Index pour la table `typecompte`
---
-ALTER TABLE `typecompte`
-  ADD PRIMARY KEY (`ID_TYPECOMPTE`);
-
---
--- Index pour la table `typeressource`
---
-ALTER TABLE `typeressource`
-  ADD PRIMARY KEY (`ID_TYPERESSOURCE`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `evenement`
---
-ALTER TABLE `evenement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=452;
---
--- AUTO_INCREMENT pour la table `ordonnancer`
---
-ALTER TABLE `ordonnancer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=452;
---
--- Contraintes pour les tables exportées
---
-
---
--- Contraintes pour la table `champ`
---
-ALTER TABLE `champ`
-  ADD CONSTRAINT `champ_ibfk_1` FOREIGN KEY (`ID_TYPECHAMP`) REFERENCES `typechamp` (`ID_TYPECHAMP`);
-
---
--- Contraintes pour la table `composer`
+-- 限制表 `composer`
 --
 ALTER TABLE `composer`
   ADD CONSTRAINT `composer_ibfk_1` FOREIGN KEY (`ID_PARCOURS`) REFERENCES `parcours` (`ID_PARCOURS`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1215,81 +1164,81 @@ ALTER TABLE `composer`
   ADD CONSTRAINT `composer_ibfk_3` FOREIGN KEY (`ID_ACTIVITE_PRECEDENTE`) REFERENCES `activite` (`ID_ACTIVITE`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `compte`
+-- 限制表 `compte`
 --
 ALTER TABLE `compte`
-  ADD CONSTRAINT `compte_ibfk_1` FOREIGN KEY (`ID_TYPECOMPTE`) REFERENCES `typecompte` (`ID_TYPECOMPTE`);
+  ADD CONSTRAINT `compte_ibfk_1` FOREIGN KEY (`ID_TYPECOMPTE`) REFERENCES `typecompte` (`ID_TYPECOMPTE`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `constituerdossier`
+-- 限制表 `constituerdossier`
 --
 ALTER TABLE `constituerdossier`
-  ADD CONSTRAINT `constituerdossier_ibfk_1` FOREIGN KEY (`ID_CHAMP`) REFERENCES `champ` (`ID_CHAMP`),
-  ADD CONSTRAINT `constituerdossier_ibfk_2` FOREIGN KEY (`ID_DOSSIERPARCOURS`) REFERENCES `dossierparcours` (`ID_DOSSIERPARCOURS`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `constituerdossier_ibfk_3` FOREIGN KEY (`ID_ONGLET`) REFERENCES `onglet` (`ID_ONGLET`);
+  ADD CONSTRAINT `constituerdossier_ibfk_3` FOREIGN KEY (`ID_ONGLET`) REFERENCES `onglet` (`ID_ONGLET`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `constituerdossier_ibfk_1` FOREIGN KEY (`ID_CHAMP`) REFERENCES `champ` (`ID_CHAMP`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `constituerdossier_ibfk_2` FOREIGN KEY (`ID_DOSSIERPARCOURS`) REFERENCES `dossierparcours` (`ID_DOSSIERPARCOURS`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `dossiergenerique`
+-- 限制表 `dossiergenerique`
 --
 ALTER TABLE `dossiergenerique`
-  ADD CONSTRAINT `dossiergenerique_ibfk_1` FOREIGN KEY (`ID_CHAMP`) REFERENCES `champ` (`ID_CHAMP`),
-  ADD CONSTRAINT `dossiergenerique_ibfk_2` FOREIGN KEY (`ID_ONGLET`) REFERENCES `onglet` (`ID_ONGLET`),
+  ADD CONSTRAINT `dossiergenerique_ibfk_2` FOREIGN KEY (`ID_ONGLET`) REFERENCES `onglet` (`ID_ONGLET`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `dossiergenerique_ibfk_1` FOREIGN KEY (`ID_CHAMP`) REFERENCES `champ` (`ID_CHAMP`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `dossiergenerique_ibfk_3` FOREIGN KEY (`ID_PARCOURS`) REFERENCES `parcours` (`ID_PARCOURS`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `dossiergenerique_ibfk_4` FOREIGN KEY (`ID_ACTIVITE`) REFERENCES `activite` (`ID_ACTIVITE`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `dossierparcours`
+-- 限制表 `dossierparcours`
 --
 ALTER TABLE `dossierparcours`
-  ADD CONSTRAINT `dossierparcours_ibfk_1` FOREIGN KEY (`ID_PATIENT`) REFERENCES `patient` (`ID_PATIENT`),
+  ADD CONSTRAINT `dossierparcours_ibfk_1` FOREIGN KEY (`ID_PATIENT`) REFERENCES `patient` (`ID_PATIENT`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `dossierparcours_ibfk_2` FOREIGN KEY (`ID_PARCOURS`) REFERENCES `parcours` (`ID_PARCOURS`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `etreindisponible`
+-- 限制表 `etreindisponible`
 --
 ALTER TABLE `etreindisponible`
   ADD CONSTRAINT `etreindisponible_ibfk_1` FOREIGN KEY (`ID_RESSOURCE`) REFERENCES `ressource` (`ID_RESSOURCE`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `evenement`
+-- 限制表 `evenement`
 --
 ALTER TABLE `evenement`
+  ADD CONSTRAINT `evenement_ibfk_2` FOREIGN KEY (`patientId`) REFERENCES `patient` (`ID_PATIENT`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `evenement_ibfk_1` FOREIGN KEY (`ressourceId`) REFERENCES `ressource` (`ID_RESSOURCE`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `evenement_ibfk_2` FOREIGN KEY (`patientId`) REFERENCES `patient` (`ID_PATIENT`),
   ADD CONSTRAINT `evenement_ibfk_3` FOREIGN KEY (`parcoursId`) REFERENCES `parcours` (`ID_PARCOURS`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `evenement_ibfk_4` FOREIGN KEY (`activiteId`) REFERENCES `activite` (`ID_ACTIVITE`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `necessiter`
+-- 限制表 `necessiter`
 --
 ALTER TABLE `necessiter`
-  ADD CONSTRAINT `necessiter_ibfk_1` FOREIGN KEY (`ID_ACTIVITE`) REFERENCES `activite` (`ID_ACTIVITE`),
-  ADD CONSTRAINT `necessiter_ibfk_2` FOREIGN KEY (`ID_TYPERESSOURCE`) REFERENCES `typeressource` (`ID_TYPERESSOURCE`);
+  ADD CONSTRAINT `necessiter_ibfk_2` FOREIGN KEY (`ID_TYPERESSOURCE`) REFERENCES `typeressource` (`ID_TYPERESSOURCE`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `necessiter_ibfk_1` FOREIGN KEY (`ID_ACTIVITE`) REFERENCES `activite` (`ID_ACTIVITE`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `ordonnancer`
+-- 限制表 `ordonnancer`
 --
 ALTER TABLE `ordonnancer`
+  ADD CONSTRAINT `ordonnancer_ibfk_2` FOREIGN KEY (`patientId`) REFERENCES `patient` (`ID_PATIENT`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ordonnancer_ibfk_1` FOREIGN KEY (`ressourceId`) REFERENCES `ressource` (`ID_RESSOURCE`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ordonnancer_ibfk_2` FOREIGN KEY (`patientId`) REFERENCES `patient` (`ID_PATIENT`),
   ADD CONSTRAINT `ordonnancer_ibfk_3` FOREIGN KEY (`parcoursId`) REFERENCES `parcours` (`ID_PARCOURS`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ordonnancer_ibfk_4` FOREIGN KEY (`activiteId`) REFERENCES `activite` (`ID_ACTIVITE`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `personnel`
+-- 限制表 `personnel`
 --
 ALTER TABLE `personnel`
   ADD CONSTRAINT `personnel_ibfk_1` FOREIGN KEY (`ID_RESSOURCE`) REFERENCES `ressource` (`ID_RESSOURCE`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `planparcours`
+-- 限制表 `planparcours`
 --
 ALTER TABLE `planparcours`
-  ADD CONSTRAINT `planparcours_ibfk_1` FOREIGN KEY (`ID_PARCOURS`) REFERENCES `parcours` (`ID_PARCOURS`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `planparcours_ibfk_2` FOREIGN KEY (`ID_JOUR`) REFERENCES `jour` (`ID_JOUR`);
+  ADD CONSTRAINT `planparcours_ibfk_2` FOREIGN KEY (`ID_JOUR`) REFERENCES `jour` (`ID_JOUR`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `planparcours_ibfk_1` FOREIGN KEY (`ID_PARCOURS`) REFERENCES `parcours` (`ID_PARCOURS`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `salle`
+-- 限制表 `salle`
 --
 ALTER TABLE `salle`
   ADD CONSTRAINT `salle_ibfk_1` FOREIGN KEY (`ID_RESSOURCE`) REFERENCES `ressource` (`ID_RESSOURCE`) ON DELETE CASCADE ON UPDATE CASCADE;

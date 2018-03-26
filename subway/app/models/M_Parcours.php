@@ -21,9 +21,11 @@ class M_Parcours extends CI_Model {
      * \param      Aucun
      */
     public function getAllParcours() {
-        $txt_sql = "SELECT id_parcours, txt_nom, int_objectif, txt_code
-			FROM parcours";
-
+       /* $txt_sql = "SELECT id_parcours, txt_nom, int_objectif, txt_code
+			FROM parcours";*/
+        $txt_sql = "SELECT id_parcours, txt_nom, txt_code
+			FROM parcours";                
+        
         $query = $this->db->query($txt_sql);
         $res = array();
 
@@ -32,7 +34,7 @@ class M_Parcours extends CI_Model {
 
             $restemp["id_parcours"] = $row->id_parcours;
             $restemp["nom"] = $row->txt_nom;
-            $restemp["objectif"] = $row->int_objectif;
+            //$restemp["objectif"] = $row->int_objectif;
             $restemp["code"] = $row->txt_code;
             array_push($res, $restemp);
         }
@@ -47,15 +49,18 @@ class M_Parcours extends CI_Model {
      */
     public function getParcoursById($id) {
         //	On récupère les infos liées au parcours dans la table Parcours
-        $txt_sql = "SELECT txt_nom, int_objectif, txt_code
+       /* $txt_sql = "SELECT txt_nom, int_objectif, txt_code
+			FROM parcours WHERE id_parcours =" . $id;*/
+        $txt_sql = "SELECT txt_nom, txt_code
 			FROM parcours WHERE id_parcours =" . $id;
+        
         $query = $this->db->query($txt_sql);
         $res = $query->row_array();
 
         $row = array();
         $row["id"] = $id;
         $row["nom"] = $res['txt_nom'];
-        $row["objectif"] = $res['int_objectif'];
+        //$row["objectif"] = $res['int_objectif'];
         $row["code"] = $res['txt_code'];
 
         // On récupère la liste des activités nécessaires pour le parcours
@@ -178,18 +183,29 @@ class M_Parcours extends CI_Model {
         $parcours['id'] = $this->getMaxIdParcours();
 
         // on cree l'activite
+        /*
         $txt_sql = "INSERT INTO parcours
         			(id_parcours,txt_nom,int_objectif,txt_code)
-                   VALUES(" . $parcours['id'] . "," . $this->db->escape($parcours['nom']) . "," . $this->db->escape($parcours['objectif']) . "," . $this->db->escape($parcours['code']) . ")";
+                   VALUES(" . $parcours['id'] . "," . $this->db->escape($parcours['nom']) . "," . $this->db->escape($parcours['objectif']) . "," . $this->db->escape($parcours['code']) . ")";*/
+        
+        $txt_sql = "INSERT INTO parcours
+        			(id_parcours,txt_nom,txt_code)
+                   VALUES(" . $parcours['id'] . "," . $this->db->escape($parcours['nom']) . "," . $this->db->escape($parcours['code']) . ")";
         $query = $this->db->query($txt_sql);
 
         //Ajout du plan parcours pour chaque jour
         $i = 1;
+        /*
         for ($i = 1; $i <= 5; $i++) {
             $txt_sql = "INSERT INTO planparcours
                    VALUES(" . $parcours['id'] . "," . $i . "," . $this->db->escape($parcours['objectif']) . ")";
             $query = $this->db->query($txt_sql);
-        }
+        }*/
+         for ($i = 1; $i <= 5; $i++) {
+            $txt_sql = "INSERT INTO planparcours
+                   VALUES(" . $parcours['id'] . "," . $i . ", 5)";
+            $query = $this->db->query($txt_sql);
+         }
 
 
         foreach ($parcours["precedences"] as $prec) {

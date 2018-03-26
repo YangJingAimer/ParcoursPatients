@@ -45,6 +45,7 @@
                                     <li><a href="<?php echo base_url('Activites/modif/') . '/' . $row["id_activite"] ?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Modifier</a></li>
                                     <li><a href="<?php echo base_url(); ?>Activites/suppr/<?php echo $row["id_activite"] ?>"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Supprimer</a></li>
                                 </ul>
+                            </div>
                         </td>
                     </tr>
 <?php } ?>

@@ -85,9 +85,20 @@ class M_RessourcesMat extends CI_Model {
      * \param      $id : id de la ressource matérielle à supprimer
      */
     public function supprRessourcesMat($id) {
-        $txt_sql = "DELETE FROM ressource
-			WHERE id_ressource = " . $id;
-        $this->db->query($txt_sql);
+        $txt_sql = "DELETE FROM salle
+			WHERE id_salle = " . $id;
+        $txt_sql2 = "DELETE FROM ordonnancer O 
+                        LEFT JOIN salle S
+                        ON O.ressourceId = S.id_ressource 
+                        WHERE S.ID_SALLE = ". $id;       
+        $txt_sql2 = "DELETE FROM evenement E 
+                        LEFT JOIN salle S
+                        ON E.ressourceId = S.id_ressource 
+                        WHERE S.ID_SALLE = ". $id; 
+        $query = $this->db->query($txt_sql);
+        $query2 = $this->db->query($txt_sql2);
+        $query3 = $this->db->query($txt_sql3);
+       
     }
 
     /**

@@ -10,7 +10,7 @@
                         <option value="<?php echo $p["id_parcours"]; ?>"><?php echo $p["nom"]; ?></option>
                     <?php } ?>
                 </select>
-            </div>
+            </div> 
         </div>
     </div>  
     <div class="row">
@@ -19,7 +19,10 @@
     </div>
     <div class="saisieDispo hidden row">
         <h4>Horaire disponible pour le : <span id="dateDispo"></span></h4>  
-        <form action="<?php echo base_url(); ?>patient/majDisponibilite" method="POST" accept-charset="utf-8">
+        <form action="<?php if ($pathForm == "patient/ajoutPatient") { echo base_url();?>patient/majDisponibilite/ <?php } 
+            else if($pathForm == "patient/ajouterRDV") { echo base_url();?>patient/ajoutDossier/ <?php }
+            else { echo base_url();?>patient/majDossier/<?php echo $id_dossier ?> <?php } ?> " method="POST" accept-charset="utf-8">
+            
             <div class="form-horizontal col-md-12">
                 <div class="form-group row ">
                     <label for="heureDebut" class="col-md-2 control-label">Heure d'arrivée</label>
@@ -101,25 +104,26 @@
 
     function drawChart() {
         $("#idParcours").val(idParcours);
-        var d = $.datepicker.formatDate('yy-mm-dd', new Date());
+        var dateDebut = $.datepicker.formatDate('yy-mm-dd', new Date());
         $.ajax({
             type: "POST",
             //headers: { 'X-XSRF-TOKEN' : $_token }, 
-            data: {"idParcours": idParcours, "dateDebut": d},
+            data: {"idParcours": idParcours, "dateDebut": dateDebut},
             url: '<?php echo base_url("Patient/getNbByDay"); ?>', //La route
             dataType: "json", //Le type de donnée de retour
             success: function (data) { //La fonction qui est appelée si la requête a fonctionné.
-                console.log(data);
+                //console.log(data);
                 var dataTable = new google.visualization.DataTable();
                 dataTable.addColumn('date', 'date');
                 dataTable.addColumn('number', 'pourcentage d\'occupation');
                 console.log(dataTable);
                 for (var i = data.length - 1; i >= 0; i--) {
                     var dateTab = new Date(data[i].date);
-                    var ratioTab = data[i].ratio * 100;
+                    var ratioTab = data[i].ratio * 10;
                     dataTable.addRow(
                             [dateTab, parseInt(ratioTab)]
                             );
+                    //window.alert(ratioTab);
                 }
                 ;
 
@@ -130,7 +134,7 @@
                     height: 350,
                     colorAxis: {
                         minValue: 0,
-                        maxValue: 200,
+                        maxValue: 50,
                         colors: ['#FFFFFF', '#FF0000']
                     },
                     calendar: {

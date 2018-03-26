@@ -89,7 +89,7 @@ class RessourcesMat extends CI_Controller {
         if ($ressource['id'] == -1) {
             $this->M_RessourcesMat->ajouteRessourcesMat($ressource);
         } else {
-            $this->M_Salle->ModifRessourcesMat($ressource);
+            $this->M_RessourcesMat->ModifRessourcesMat($ressource);
         }
 
         $this->index();

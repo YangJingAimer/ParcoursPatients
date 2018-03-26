@@ -15,11 +15,11 @@
                 foreach ($dossierParcours["dossierParcours"] as $dossier) {
                     if ($dossier["id_dossierparcours"] == $dossierParcours["id_dparcour_afficher"]) {
                         ?>
-                        <li class="active col-md-12 dossier-parcours" data-dparcours="<?php echo $dossier["id_dossierparcours"]; ?>"><a href="#"><?php echo $dossier["date_creation_dossier"]; ?></a></li>
+                        <li class="active col-md-12 dossier-parcours" data-dparcours="<?php echo $dossier["id_dossierparcours"]; ?>"><a href="#"><?php echo $dossier["date_disponible_debut"]; ?></a></li>
                     <?php
                     } else {
                         ?>
-                        <li class="col-md-12 dossier-parcours" data-dparcours="<?php echo $dossier["id_dossierparcours"]; ?>"><a href="#"><?php echo $dossier["date_creation_dossier"]; ?></a></li>
+                        <li class="col-md-12 dossier-parcours" data-dparcours="<?php echo $dossier["id_dossierparcours"]; ?>"><a href="#"><?php echo $dossier["date_disponible_fin"]; ?></a></li>
                     <?php }
                 }
                 ?>
@@ -28,6 +28,7 @@
         </div>
         <div class="col-md-10">
             <div class="row">
+               
                 <ul class="nav nav-tabs">
                     <?php
                     foreach ($dossierParcours["dossierParcours"] as $dossier) {
@@ -71,12 +72,17 @@
 
                     <div class="form-group row">
                         <div class="col-md-10">
+                            
                             <button class="btn btn-primary ajout-champ" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter un nouveau champ pour l'onglet</button>
+                            
                         </div>
                     </div>
                     <div class="row">
                         <div class=" col-md-10"></div>
                         <div class="pull-right col-md-2">
+                            
+                            
+                                                                                
                             <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Sauvegarder</button>
                         </div>
                     </div>

@@ -21,12 +21,12 @@ class M_DossierParcours extends CI_Model {
      * \details    Récupérer les informations sur les dossiers parcours d'un patient
      * \param      $idPatient : l'id du patient
      *             $idOnglet : l'id de l'onglet du dossier parcours
-     *             $idDossierParcours : l'id du ossier parcours
+     *             $idDossierParcours : l'id du dossier parcours
      */
     public function getDossierByIdPatient($idPatient, $idOnglet, $idDossierParcours) {
 
-        $txt_sql = "SELECT P.id_patient, P.txt_nom, P.txt_prenom, DP.id_dossierparcours, DP.date_creation_dossier, 
-			DP.date_derniere_modification, CD.txt_valeur, O.id_onglet, O.txt_nom as txt_onglet, C.id_champ, C.txt_nom  as txt_champ, TC.txt_valeur  as txt_typeChamp
+        $txt_sql = "SELECT P.id_patient, P.txt_nom, P.txt_prenom, DP.id_dossierparcours, DP.date_disponible_debut, 
+			DP.date_disponible_fin, CD.txt_valeur, O.id_onglet, O.txt_nom as txt_onglet, C.id_champ, C.txt_nom  as txt_champ, TC.txt_valeur  as txt_typeChamp
             FROM patient P
             LEFT JOIN dossierparcours DP
             ON P.id_patient = DP.id_patient
@@ -39,9 +39,9 @@ class M_DossierParcours extends CI_Model {
             LEFT JOIN typechamp TC
             ON C.id_typechamp=TC.id_typechamp
 			WHERE P.id_patient =" . $this->db->escape($idPatient) . "
-			ORDER BY DP.id_dossierparcours, O.id_onglet, C.id_champ";
+			ORDER BY DP.id_dossierparcours, O.id_onglet, C.id_champ";       
 
-        $query = $this->db->query($txt_sql);
+        $query1 = $this->db->query($txt_sql);
         $res = array();
         $nbTour = 0;
         $dossierParcours = array();
@@ -49,14 +49,19 @@ class M_DossierParcours extends CI_Model {
         $onglet = array();
         $onglets = array();
         $champs = array();
-        foreach ($query->result() as $row) {
+        foreach ($query1->result() as $row) {
             if ($nbTour == 0) {
                 $res["id_patient"] = $row->id_patient;
                 $res["txt_nom"] = $row->txt_nom;
                 $res["txt_prenom"] = $row->txt_prenom;
                 $dossier["id_dossierparcours"] = $row->id_dossierparcours;
-                $dossier["date_creation_dossier"] = $row->date_creation_dossier;
-                $dossier["date_derniere_modification"] = $row->date_derniere_modification;
+                
+                //$dossier["date_creation_dossier"] = $row->date_creation_dossier;
+               // $dossier["date_derniere_modification"] = $row->date_derniere_modification;
+                 
+                $dossier["date_disponible_debut"] = $row->date_disponible_debut;
+                $dossier["date_disponible_fin"] = $row->date_disponible_fin;
+                
                 $onglet["id_onglet"] = $row->id_onglet;
                 $onglet["txt_onglet"] = $row->txt_onglet;
                 if ($idOnglet > 0) {
@@ -81,11 +86,13 @@ class M_DossierParcours extends CI_Model {
                     $dossier["onglets"] = $onglets;
                     array_push($dossierParcours, $dossier);
                     $dossier["id_dossierparcours"] = $row->id_dossierparcours;
-                    $dossier["date_creation_dossier"] = $row->date_creation_dossier;
-                    $dossier["date_derniere_modification"] = $row->date_derniere_modification;
+                    $dossier["id_patient"] = $idPatient;
+                    $dossier["date_disponible_debut"] = $row->date_disponible_debut;
+                    $dossier["date_disponible_fin"] = $row->date_disponible_fin;
                     $onglets = array();
                 }
             }
+         
             $champ = array();
             $champ["id_champ"] = $row->id_champ;
             $champ["txt_champ"] = $row->txt_champ;
@@ -93,7 +100,9 @@ class M_DossierParcours extends CI_Model {
             $champ["txt_typeChamp"] = $row->txt_typeChamp;
             array_push($champs, $champ);
             $nbTour++;
+           
         }
+        
         $onglet["champs"] = $champs;
         array_push($onglets, $onglet);
         $dossier["onglets"] = $onglets;
@@ -166,16 +175,97 @@ class M_DossierParcours extends CI_Model {
      * \brief      Permet de créer un nouveau dossier parcours pour un patient
      * \details    Permet de créer un nouveau dossier parcours pour un patient
      * \param      $idPatient : id du patient
-     *             $idParcours : id du parcours
+     * \param      $idParcours : id du parcours
+     * \param      $dateDebut : la date début de RDV
+     *\param       $dateFin : la date fin de RDV
      */
-    public function nouvelleDossier($idPatient, $idParcours) {
+    public function nouvelleDossier($idPatient, $idParcours, $dateDebut, $dateFin) {
 
         $idDossieParcours = $this->getMaxIdDossierParcours();
 
-        $sql = "INSERT INTO dossierparcours (id_dossierparcours, id_patient, id_parcours, date_creation_dossier, date_derniere_modification) 
-        VALUES (" . $this->db->escape($idDossieParcours) . ", " . $this->db->escape($idPatient) . ", " . $this->db->escape($idParcours) . ", CURDATE(), CURDATE())";
-
-        $this->db->query($sql);
+        $sql = "INSERT INTO dossierparcours (id_dossierparcours, id_patient, id_parcours, date_creation_dossier, date_derniere_modification, date_disponible_debut, date_disponible_fin) 
+        VALUES (" . $this->db->escape($idDossieParcours) . ", " . $this->db->escape($idPatient) . ", " . $this->db->escape($idParcours) . ", CURDATE(), CURDATE(), " . $this->db->escape($dateDebut) . ", " . $this->db->escape($dateFin) . ")";
+        $query1 = $this->db->query($sql);      
+        /*
+        $sql = "DELETE FROM constituerdossier WHERE ID_DOSSIERPARCOURS = " . $this->db->escape($idDossieParcours);
+        $query = $this->db->query($sql);*/
+        
+        $txt_sql = "SELECT O.ID_ONGLET 
+                    FROM dossierparcours D
+                    LEFT JOIN composer C
+                    ON D.ID_PARCOURS = C.ID_PARCOURS
+                    LEFT JOIN onglet O                                 
+                    ON O.ID_ACTIVITE = C.ID_ACTIVITE
+                    WHERE D.ID_DOSSIERPARCOURS = " . $idDossieParcours;
+                    
+        $query = $this->db->query($txt_sql);
+        
+        foreach($query->result() as $row){
+            $sql1 = "INSERT INTO CONSTITUERDOSSIER (ID_CHAMP, ID_ONGLET, ID_DOSSIERPARCOURS)
+                    VALUES (2,". $row->ID_ONGLET.", " . $this->db->escape($idDossieParcours) . ")";
+            
+            $sql2 = "INSERT INTO CONSTITUERDOSSIER (ID_CHAMP, ID_ONGLET, ID_DOSSIERPARCOURS)
+                    VALUES (3,". $row->ID_ONGLET.", " . $this->db->escape($idDossieParcours) . ")";
+            $query = $this->db->query($sql1);
+            $query = $this->db->query($sql2);
+        }
+    }
+    
+    /*
+     * \BRIEF permet de suprimer un dossier parcours d'un patient
+     * \param $id_dossierParcours id de dossier parcours
+     */
+    public function supprimerDossier($id_dossierParcours){
+        $txt_sql = "DELETE FROM dossierparcours                   
+			WHERE id_dossierparcours = " . $id_dossierParcours;
+        $query = $this->db->query($txt_sql);
+    }
+    
+    /*
+     * \brief permet de modifier un dossier parcours
+     * \param $idDossier l'id de dossier à mise à jour
+     * \param $idParcours l'id de parcours à mise à jour
+     * \param $dateDebut la date début de nouveau rdv
+     * \param $dateFin la date fin de nouveau rdv
+     */
+    public function majDossier($idDossier,$idParcours, $dateDebut, $dateFin){
+        //renouvler la  table dossiparcours
+        $txt_sql = "UPDATE dossierparcours SET ID_PARCOURS = ". $this->db->escape($idParcours).", DATE_DISPONIBLE_DEBUT = ". $this->db->escape($dateDebut).", DATE_DISPONIBLE_FIN = ". $this->db->escape($dateFin)." 
+                        WHERE id_dossierparcours = ". $this->db->escape($idDossier);
+        $query = $this->db->query($txt_sql);
+        //supprimer les anciens data de la table constituerdossier lié à l'ancien dossier
+        $sql = "DELETE FROM constituerdossier WHERE ID_DOSSIERPARCOURS = " . $this->db->escape($idDossier);
+        $query = $this->db->query($sql);
+        //renouveler la table constituerdossier 
+        $txt_sql = "SELECT O.ID_ONGLET 
+                    FROM dossierparcours D
+                    LEFT JOIN composer C
+                    ON D.ID_PARCOURS = C.ID_PARCOURS
+                    LEFT JOIN onglet O                                 
+                    ON O.ID_ACTIVITE = C.ID_ACTIVITE
+                    WHERE D.ID_DOSSIERPARCOURS = " . $idDossier;
+                    
+        $query = $this->db->query($txt_sql);
+        
+        foreach($query->result() as $row){
+            $sql1 = "INSERT INTO CONSTITUERDOSSIER (ID_CHAMP, ID_ONGLET, ID_DOSSIERPARCOURS)
+                    VALUES (2,". $row->ID_ONGLET.", " . $this->db->escape($idDossier) . ")";
+            
+            $sql2 = "INSERT INTO CONSTITUERDOSSIER (ID_CHAMP, ID_ONGLET, ID_DOSSIERPARCOURS)
+                    VALUES (3,". $row->ID_ONGLET.", " . $this->db->escape($idDossier) . ")";
+            $query = $this->db->query($sql1);
+            $query = $this->db->query($sql2);
+        }
     }
 
+    /*
+     * \brief permet de trouver l'id d'un patient selon l'id dossier de parcours
+     * \param $id_dossier id de dossier parcours pour trouver le patient
+     */
+    public function findPatientByIdDossier($id_dossier){
+        $txt_sql = "SELECT id_patient FROM dossierparcours 
+                        WHERE id_dossierparcours = " . $id_dossier;
+        $query = $this->db->query($txt_sql);
+        
+    }
 }

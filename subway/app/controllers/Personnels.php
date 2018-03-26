@@ -90,11 +90,14 @@ class Personnels extends CI_Controller {
         $data['chemin'] = '/ressource/v_addPersonnel';
         $data['id'] = $id;
         $personnel = $this->M_Personnel->getPersonneById($id);
+        
         $data['nom'] = $personnel['txt_nom'];
         $data['prenom'] = $personnel['txt_prenom'];
         $data['type'] = $personnel['Type_nom'];
         $data['idRessource'] = $personnel['id_ressource'];
         $data['idType'] = $personnel['id_type'];
+        
+        
 
         $this->load->view('/V_generale', $data);
     }

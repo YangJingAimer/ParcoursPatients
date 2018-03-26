@@ -70,9 +70,19 @@ class M_Personnel extends CI_Model {
      * \param      $id : id de la personne à supprimer
      */
     public function supprPersonne($id) {
-        $txt_sql = "DELETE FROM ressource
-			WHERE id_ressource = " . $id;
+        $txt_sql = "DELETE FROM personnel
+			WHERE id_personnel = " . $id;
+        $txt_sql2 = "DELETE FROM ordonnancer O 
+                        LEFT JOIN personnel P
+                        ON O.ressourceId = P.id_ressource 
+                        WHERE P.ID_PERSONNEL = ". $id;        
+        $txt_sql2 = "DELETE FROM evenement E 
+                        LEFT JOIN personnel P
+                        ON E.ressourceId = P.id_ressource 
+                        WHERE P.ID_PERSONNEL = ". $id;
         $query = $this->db->query($txt_sql);
+        $query2 = $this->db->query($txt_sql2);
+        $query3 = $this->db->query($txt_sql3);
     }
 
     /**

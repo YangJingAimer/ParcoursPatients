@@ -62,12 +62,13 @@ class M_Planning extends CI_Model {
 
 
         // activité à planifier (rendez vous dans la table patient )
-        $txt_sql = "SELECT DISTINCT(activite.ID_ACTIVITE) as id_activite, patient.ID_PATIENT as id_patient, parcours.ID_PARCOURS as id_parcours, activite.TXT_NOM as nom_activite, patient.TXT_NOM as nom_patient, patient.TXT_PRENOM as prenom_patient, parcours.TXT_NOM as nom_parcours, activite.INT_DUREE as duree
-                    FROM patient, parcours, composer, activite
-                    WHERE patient.ID_PARCOURS_SUP = parcours.ID_PARCOURS
-                    AND parcours.ID_PARCOURS = composer.ID_PARCOURS
-                    AND composer.ID_ACTIVITE = activite.ID_ACTIVITE
-                    AND DATE(DATE_DISPONIBLE_DEBUT) =" . $this->db->escape($date);
+        $txt_sql = "SELECT DISTINCT(A.ID_ACTIVITE) as id_activite, Pat.ID_PATIENT as id_patient, Par.ID_PARCOURS as id_parcours, A.TXT_NOM as nom_activite, Pat.TXT_NOM as nom_patient, Pat.TXT_PRENOM as prenom_patient, Par.TXT_NOM as nom_parcours, A.INT_DUREE as duree
+                    FROM patient Pat, parcours Par, composer C, activite A, dossierparcours D
+                    WHERE Pat.ID_PATIENT = D.ID_PATIENT
+                    AND D.ID_PARCOURS = Par.ID_PARCOURS
+                    AND Par.ID_PARCOURS = C.ID_PARCOURS
+                    AND C.ID_ACTIVITE = A.ID_ACTIVITE
+                    AND DATE(D.DATE_DISPONIBLE_DEBUT) =" . $this->db->escape($date);
         $query = $this->db->query($txt_sql);
         $res = array();
 

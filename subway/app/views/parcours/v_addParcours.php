@@ -22,12 +22,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="duree" class="col-sm-2 control-label">Objectif (patients attendus par jour)</label>
-                        <div class="col-sm-10">
-                            <input type="number" min=0 class="form-control" name="objectif" placeholder="Entrez l'objectif"  value="<?php echo $code; ?>">
-                        </div>
-                    </div> 
+                   
 
                     <div class="form-group">
                         <label for="commentaire" class="col-sm-2 control-label">Code</label>

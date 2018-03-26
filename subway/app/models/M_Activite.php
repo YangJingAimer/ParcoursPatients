@@ -19,7 +19,7 @@ class M_Activite extends CI_Model {
     public function getAllActivites() {
         //	On simule l'envoi d'une requête
         $txt_sql = "SELECT A.id_activite, A.txt_nom, A.txt_commentaire, A.int_duree
-			FROM activite A WHERE A.id_activite <> 0";
+			FROM activite A WHERE A.id_activite <> 0 ";
         $query = $this->db->query($txt_sql);
         $res = array();
 
@@ -94,7 +94,7 @@ class M_Activite extends CI_Model {
     }
 
     public function supprActivite($id) {
-        $txt_sql = "DELETE FROM activite
+        $txt_sql = "DELETE FROM activite 
 			WHERE id_activite = " . $id;
         $query = $this->db->query($txt_sql);
     }

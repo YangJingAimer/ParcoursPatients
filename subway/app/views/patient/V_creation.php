@@ -1,7 +1,8 @@
 <div class="container-fluid" >  
+    
     <div class="jumbotron">	
         <?php
-        if ($pathForm == "modifierPatient") {
+        if ($pathForm == "patient/ajoutPatient") {
             echo "<h3>Ajout d'un nouveau patient.</h3>";
         } else {
             echo "<h3>Modification d'un patient.</h3>";
@@ -9,9 +10,11 @@
         ?>
 
         <br>
+        
         <div class="row">
 
             <div class="form-horizontal col-md-12">	
+                
                 <form action="<?php echo base_url($pathForm); ?>" method="POST" accept-charset="utf-8">
                     <?php echo validation_errors(); ?>
 
@@ -217,10 +220,10 @@
 
                     <div class="pull-right col-md-2">
                         <button class="btn btn-success" type="submit" ><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><?php
-                            if ($pathForm == "modifierPatient") {
+                            if ($pathForm == "patient/ajoutPatient") {
                                 echo "Ajouter";
                             } else {
-                                echo " Suivant";
+                                echo " Confirmer";
                             }
                             ?>         </button>
                     </div>
@@ -231,8 +234,10 @@
                 </form>
             </div>
         </div>
-
+       
     </div> 
+  
+
 </div> <!-- /container -->
 
 <script type="text/javascript">

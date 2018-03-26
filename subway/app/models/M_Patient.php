@@ -152,21 +152,21 @@ class M_Patient extends CI_Model {
      */
     public function nombreDePatientParcour($idparcours, $datedebut) {
         /** Nombre de parcours ordonnnancé * */
-        $txt_sql = "SELECT date(O.start) as date, 
-        count( DISTINCT(O.patientId))/P.INT_NB_PATIENT as ratio 
-        FROM ordonnancer O, planparcours P, jour J 
-        WHERE O.parcoursId = P.ID_PARCOURS 
+        
+        $txt_sql = "SELECT D.DATE_DISPONIBLE_DEBUT as day, 
+        count( DISTINCT(D.ID_PATIENT))/P.INT_NB_PATIENT as ratio 
+        FROM dossierparcours D, planparcours P, jour J 
+        WHERE D.ID_PARCOURS = P.ID_PARCOURS 
         AND P.ID_JOUR = J.ID_JOUR 
-        AND WEEKDAY(date(O.start)) = J.INT_JOUR_SQL 
-        AND date(O.start) >=" . $this->db->escape($datedebut) . " 
-        AND O.parcoursId = " . $this->db->escape($idparcours) . "
-        group by date";
+        AND D.DATE_DISPONIBLE_DEBUT >=" . $this->db->escape($datedebut) . " 
+        AND D.ID_PARCOURS = " . $this->db->escape($idparcours) . "
+        group by day";
         $query = $this->db->query($txt_sql);
         $res = array();
 
         foreach ($query->result() as $row) {
             $restemp = array();
-            $restemp["date"] = $row->date;
+            $restemp["date"] = $row->day;
             $restemp["ratio"] = $row->ratio;
             array_push($res, $restemp);
         }
@@ -212,7 +212,7 @@ class M_Patient extends CI_Model {
      */
     public function patientParNomOuPrenom($recherche) {
         $txt_sql = "SELECT ID_PATIENT, TXT_NOM, TXT_PRENOM, DATE_NAISSANCE, TXT_NUMSECU FROM patient 
-        WHERE UPPER(TXT_NOM) like '%" . $this->db->escape_str(strtoupper($recherche)) . "%'
+        WHERE UPPER(TXT_NOM) like '%" . $this->db->escape_str(strtoupper($recherche)) . "%'           
         OR UPPER(TXT_PRENOM) like '%" . $this->db->escape_str(strtoupper($recherche)) . "%'
         ORDER BY TXT_NOM ASC
         ";
@@ -241,6 +241,7 @@ class M_Patient extends CI_Model {
         $query = $this->db->query($txt_sql);
         $res = array();
         foreach ($query->result() as $row) {
+            
             $restemp = array();
             $restemp["ID_PATIENT"] = $row->ID_PATIENT;
             $restemp["ID_COMPTE"] = $row->ID_COMPTE;
@@ -259,11 +260,23 @@ class M_Patient extends CI_Model {
             $restemp["ID_PARCOURS_SUP"] = $row->ID_PARCOURS_SUP;
             $restemp["DATE_DISPONIBLE_DEBUT"] = $row->DATE_DISPONIBLE_DEBUT;
             $restemp["DATE_DISPONIBLE_FIN"] = $row->DATE_DISPONIBLE_FIN;
-
-
+             
+          
             array_push($res, $restemp);
+            
         }
         return $res;
+    }
+    
+    /**
+     * \brief     Supprime un patient
+     * \details   Supprime un patient en fonction de son id
+     * \param     $id : id du patient à supprimer
+     */
+    public function supprimerPatient($id) {
+        $txt_sql = "DELETE FROM patient                   
+			WHERE id_patient = " . $id;
+        $query = $this->db->query($txt_sql);
     }
 
 }
