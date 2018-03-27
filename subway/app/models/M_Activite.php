@@ -97,6 +97,9 @@ class M_Activite extends CI_Model {
         $txt_sql = "DELETE FROM activite 
 			WHERE id_activite = " . $id;
         $query = $this->db->query($txt_sql);
+        $sql = "DELETE FROM onglet
+                        WHERE id_onglet = " . $id;
+        $query = $this->db->query($sql);
     }
 
     public function getActiviteById($id) {
@@ -181,7 +184,10 @@ class M_Activite extends CI_Model {
                    VALUES(" . $activite['id'] . "," . $this->db->escape($activite['nom']) . "," . $this->db->escape($activite['duree']) . "," . $this->db->escape($activite['commentaire']) . ")";
         $query = $this->db->query($txt_sql);
 
-
+        $sql = "INSERT INTO onglet
+                                (id_onglet, txt_nom, id_activite)
+                                VALUES(" . $activite['id'] . "," . $this->db->escape($activite['nom']) . "," . $activite['id'] . ")";
+        $query = $this->db->query($sql);
 
         foreach ($activite["besoins"] as $besoin) {
             // on ajoute une relation de composition pour toutes les ressources ajoutees

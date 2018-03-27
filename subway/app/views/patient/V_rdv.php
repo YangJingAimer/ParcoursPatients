@@ -13,7 +13,7 @@ and open the template in the editor.
             <thead>         
             <th class="col-xs-3">Date de RDV</th>
             <!--th class="col-xs-1">Objectif</th-->
-            
+            <th class="col-xs-3">Nom de Parcours</th>
             <th class="col-xs-1"></th>
            
             </thead>
@@ -26,7 +26,7 @@ and open the template in the editor.
                 <tr>
                         <td><?php echo $dossier["date_disponible_debut"]; ?></td>
                         
-                        
+                        <td><?php echo $dossier["nom_parcours"]; ?></td>
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

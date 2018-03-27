@@ -30,6 +30,7 @@ class M_DossierParcours extends CI_Model {
             FROM patient P
             LEFT JOIN dossierparcours DP
             ON P.id_patient = DP.id_patient
+            
             LEFT JOIN constituerdossier CD
             ON CD.id_dossierparcours=DP.id_dossierparcours
             LEFT JOIN onglet O
@@ -41,7 +42,10 @@ class M_DossierParcours extends CI_Model {
 			WHERE P.id_patient =" . $this->db->escape($idPatient) . "
 			ORDER BY DP.id_dossierparcours, O.id_onglet, C.id_champ";       
 
+        
+        
         $query1 = $this->db->query($txt_sql);
+        
         $res = array();
         $nbTour = 0;
         $dossierParcours = array();
@@ -55,10 +59,7 @@ class M_DossierParcours extends CI_Model {
                 $res["txt_nom"] = $row->txt_nom;
                 $res["txt_prenom"] = $row->txt_prenom;
                 $dossier["id_dossierparcours"] = $row->id_dossierparcours;
-                
-                //$dossier["date_creation_dossier"] = $row->date_creation_dossier;
-               // $dossier["date_derniere_modification"] = $row->date_derniere_modification;
-                 
+                  
                 $dossier["date_disponible_debut"] = $row->date_disponible_debut;
                 $dossier["date_disponible_fin"] = $row->date_disponible_fin;
                 
@@ -83,16 +84,24 @@ class M_DossierParcours extends CI_Model {
                     $onglet["txt_onglet"] = $row->txt_onglet;
                 }
                 if ($dossier["id_dossierparcours"] != $row->id_dossierparcours) {
-                    $dossier["onglets"] = $onglets;
+                    $dossier["onglets"] = $onglets;                  
+                  
                     array_push($dossierParcours, $dossier);
                     $dossier["id_dossierparcours"] = $row->id_dossierparcours;
                     $dossier["id_patient"] = $idPatient;
                     $dossier["date_disponible_debut"] = $row->date_disponible_debut;
-                    $dossier["date_disponible_fin"] = $row->date_disponible_fin;
+                    $dossier["date_disponible_fin"] = $row->date_disponible_fin;                                     
+                             
                     $onglets = array();
                 }
             }
-         
+            $sql = "SELECT P.TXT_NOM FROM parcours P INNER JOIN dossierparcours D
+                    ON D.id_parcours = P.id_parcours 
+                    WHERE D.id_dossierparcours = " . $this->db->escape($row->id_dossierparcours);
+                    $query2 = $this->db->query($sql);
+                    foreach($query2->result() as $row2){
+                        $dossier["nom_parcours"] = $row2->TXT_NOM;
+                    }
             $champ = array();
             $champ["id_champ"] = $row->id_champ;
             $champ["txt_champ"] = $row->txt_champ;
@@ -156,7 +165,8 @@ class M_DossierParcours extends CI_Model {
         $this->db->query($sql);
     }
 
-    /**
+    
+     /**
      * \brief      Obtenir le maxid de le table dossierParcours
      * \details    Obtenir le maxid de le table dossierParcours
      * \param      Aucun
@@ -170,6 +180,7 @@ class M_DossierParcours extends CI_Model {
 
         return $maxId + 1;
     }
+       
 
     /**
      * \brief      Permet de créer un nouveau dossier parcours pour un patient
@@ -182,6 +193,7 @@ class M_DossierParcours extends CI_Model {
     public function nouvelleDossier($idPatient, $idParcours, $dateDebut, $dateFin) {
 
         $idDossieParcours = $this->getMaxIdDossierParcours();
+        //$idConstituer = $this->getMaxIdConstituer();
 
         $sql = "INSERT INTO dossierparcours (id_dossierparcours, id_patient, id_parcours, date_creation_dossier, date_derniere_modification, date_disponible_debut, date_disponible_fin) 
         VALUES (" . $this->db->escape($idDossieParcours) . ", " . $this->db->escape($idPatient) . ", " . $this->db->escape($idParcours) . ", CURDATE(), CURDATE(), " . $this->db->escape($dateDebut) . ", " . $this->db->escape($dateFin) . ")";
@@ -201,12 +213,12 @@ class M_DossierParcours extends CI_Model {
         $query = $this->db->query($txt_sql);
         
         foreach($query->result() as $row){
-            $sql1 = "INSERT INTO CONSTITUERDOSSIER (ID_CHAMP, ID_ONGLET, ID_DOSSIERPARCOURS)
-                    VALUES (2,". $row->ID_ONGLET.", " . $this->db->escape($idDossieParcours) . ")";
             
-            $sql2 = "INSERT INTO CONSTITUERDOSSIER (ID_CHAMP, ID_ONGLET, ID_DOSSIERPARCOURS)
-                    VALUES (3,". $row->ID_ONGLET.", " . $this->db->escape($idDossieParcours) . ")";
+            $sql1 = "INSERT INTO CONSTITUERDOSSIER (ID_CHAMP, ID_ONGLET, ID_DOSSIERPARCOURS)
+                    VALUES (2,". $row->ID_ONGLET.", " . $this->db->escape($idDossieParcours) . " )";
             $query = $this->db->query($sql1);
+            $sql2 = "INSERT INTO CONSTITUERDOSSIER (ID_CHAMP, ID_ONGLET, ID_DOSSIERPARCOURS)
+                    VALUES (3,". $row->ID_ONGLET.", " . $this->db->escape($idDossieParcours) . ")";         
             $query = $this->db->query($sql2);
         }
     }
@@ -250,10 +262,9 @@ class M_DossierParcours extends CI_Model {
         foreach($query->result() as $row){
             $sql1 = "INSERT INTO CONSTITUERDOSSIER (ID_CHAMP, ID_ONGLET, ID_DOSSIERPARCOURS)
                     VALUES (2,". $row->ID_ONGLET.", " . $this->db->escape($idDossier) . ")";
-            
-            $sql2 = "INSERT INTO CONSTITUERDOSSIER (ID_CHAMP, ID_ONGLET, ID_DOSSIERPARCOURS)
-                    VALUES (3,". $row->ID_ONGLET.", " . $this->db->escape($idDossier) . ")";
             $query = $this->db->query($sql1);
+            $sql2 = "INSERT INTO CONSTITUERDOSSIER (ID_CHAMP, ID_ONGLET, ID_DOSSIERPARCOURS)
+                    VALUES (3,". $row->ID_ONGLET.", " . $this->db->escape($idDossier) . ")";           
             $query = $this->db->query($sql2);
         }
     }
